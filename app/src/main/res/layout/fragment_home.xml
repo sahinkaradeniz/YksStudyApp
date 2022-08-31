@@ -4,18 +4,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.HomeFragment.HomeFragment">
+    android:layout_gravity="center"
+    android:background="@color/white"
+    tools:context=".view.Home.HomeFragment">
+
+    <io.devlight.xtreeivi.cornercutlinearlayout.CornerCutLinearLayout
+        android:id="@+id/cornerCutLinearLayout44"
+        android:layout_width="0dp"
+        android:layout_height="176dp"
+        android:background="@color/purple_200"
+        android:orientation="vertical"
+        app:ccll_child_corner_cut_type="oval"
+        app:ccll_corner_cut_size="8dp"
+        app:ccll_custom_shadow_color="@color/purple_200"
+        app:ccll_custom_shadow_radius="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cornerCutLinearLayout4"
+        app:layout_constraintEnd_toStartOf="@+id/view2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/cornerCutLinearLayout4">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator
+                android:id="@+id/circular_progress3"
+                android:layout_width="120dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintTop_toBottomOf="@+id/textView236"
+                app:progressCap="round"
+                app:progressColor="@color/darkmaterialblue"
+                app:progressStrokeWidth="12dp"
+                app:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView236"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Planlama"
+                android:textColor="@color/white"
+                android:textStyle="normal|bold"
+
+                app:layout_constraintEnd_toEndOf="@+id/circular_progress3"
+                app:layout_constraintStart_toStartOf="@+id/circular_progress3"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </io.devlight.xtreeivi.cornercutlinearlayout.CornerCutLinearLayout>
 
     <io.devlight.xtreeivi.cornercutlinearlayout.CornerCutLinearLayout
         android:id="@+id/cornerCutLinearLayout3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:background="@color/darkmaterialblue"
+        android:background="@color/colorPrimary"
         android:orientation="vertical"
         app:ccll_child_corner_cut_type="oval"
         app:ccll_corner_cut_size="8dp"
-        app:ccll_custom_shadow_color="@color/darkmaterialblue"
+        app:ccll_custom_shadow_color="@color/colorPrimary"
         app:ccll_custom_shadow_radius="12dp"
         app:layout_constraintEnd_toEndOf="@+id/cornerCutLinearLayout5"
         app:layout_constraintStart_toStartOf="@+id/cornerCutLinearLayout5"
@@ -60,7 +115,7 @@
                 android:layout_marginTop="1dp"
                 android:layout_marginEnd="4dp"
                 android:layout_marginBottom="1dp"
-                android:backgroundTint="@color/darkmaterialblue"
+                android:backgroundTint="@color/colorPrimary"
                 android:src="@drawable/ic_baseline_person_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -72,41 +127,52 @@
     <io.devlight.xtreeivi.cornercutlinearlayout.CornerCutLinearLayout
         android:id="@+id/cornerCutLinearLayout4"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_height="176dp"
         android:layout_marginBottom="8dp"
-        android:background="@color/red"
+        android:background="@color/purple_200"
         android:orientation="vertical"
         app:ccll_child_corner_cut_type="oval"
         app:ccll_corner_cut_size="8dp"
-        app:ccll_custom_shadow_color="@color/red"
+        app:ccll_custom_shadow_color="@color/purple_200"
         app:ccll_custom_shadow_radius="12dp"
         app:layout_constraintBottom_toTopOf="@+id/view1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/view2"
         app:layout_constraintTop_toBottomOf="@+id/cornerCutLinearLayout5">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="match_parent">
 
-            >
+            <antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator
+                android:id="@+id/circular_progress"
+                android:layout_width="120dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView16"
+                app:progressCap="round"
+                app:progressColor="@color/darkmaterialblue"
+                app:progressStrokeWidth="12dp"
+                app:textSize="30sp" />
 
             <TextView
-                android:id="@+id/textView10"
+                android:id="@+id/textView16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Bugün"
+                android:layout_marginTop="2dp"
+                android:text="Soru"
                 android:textColor="@color/white"
-                android:textSize="15sp"
                 android:textStyle="normal|bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/circular_progress"
+                app:layout_constraintStart_toStartOf="@+id/circular_progress"
                 app:layout_constraintTop_toTopOf="parent" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </io.devlight.xtreeivi.cornercutlinearlayout.CornerCutLinearLayout>
 
@@ -114,15 +180,15 @@
         android:id="@+id/cornerCutLinearLayout5"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/red"
+        android:background="@color/purple_200"
         android:orientation="vertical"
         app:ccll_child_corner_cut_type="oval"
         app:ccll_corner_cut_size="8dp"
-        app:ccll_custom_shadow_color="@color/red"
+        app:ccll_custom_shadow_color="@color/purple_200"
         app:ccll_custom_shadow_radius="12dp"
         app:layout_constraintBottom_toTopOf="@+id/cornerCutLinearLayout4"
-        app:layout_constraintEnd_toEndOf="@+id/cornerCutLinearLayout4"
-        app:layout_constraintStart_toStartOf="@+id/cornerCutLinearLayout4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cornerCutLinearLayout3">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -136,7 +202,7 @@
                 android:layout_marginTop="8dp"
                 android:text="Sınava"
                 android:textColor="@color/white"
-                android:textSize="15sp"
+                android:textSize="14sp"
                 android:textStyle="normal|bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -144,16 +210,16 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView13"
+                android:id="@+id/dateYks"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginBottom="17dp"
-                android:text="260 Gün 20 Saat 35 Dakika Kaldı"
+                android:layout_marginBottom="8dp"
+                android:text="260 Gün 20 Saat 35 Dakika 56 sn. Kaldı"
                 android:textColor="@color/white5"
-                android:textSize="17sp"
+                android:textSize="16sp"
                 android:textStyle="normal|bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -168,11 +234,11 @@
         android:layout_height="wrap_content"
 
         android:layout_marginBottom="16dp"
-        android:background="@color/darkmaterialblue"
+        android:background="@color/colorPrimary"
         android:orientation="vertical"
         app:ccll_child_corner_cut_type="oval"
         app:ccll_corner_cut_size="10dp"
-        app:ccll_custom_shadow_color="@color/darkmaterialblue"
+        app:ccll_custom_shadow_color="@color/colorPrimary"
         app:ccll_custom_shadow_radius="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/cornerCutLinearLayout"
@@ -214,11 +280,11 @@
         android:id="@+id/cornerCutLinearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/darkmaterialblue"
+        android:background="@color/colorPrimary"
         android:orientation="vertical"
         app:ccll_child_corner_cut_type="oval"
         app:ccll_corner_cut_size="10dp"
-        app:ccll_custom_shadow_color="@color/darkmaterialblue"
+        app:ccll_custom_shadow_color="@color/colorPrimary"
         app:ccll_custom_shadow_radius="12dp"
         app:layout_constraintBottom_toTopOf="@+id/view4"
         app:layout_constraintEnd_toEndOf="@+id/view2"
@@ -265,11 +331,11 @@
         android:id="@+id/cornerCutLinearLayout2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/darkmaterialblue"
+        android:background="@color/colorPrimary"
         android:orientation="vertical"
         app:ccll_child_corner_cut_type="oval"
         app:ccll_corner_cut_size="10dp"
-        app:ccll_custom_shadow_color="@color/darkmaterialblue"
+        app:ccll_custom_shadow_color="@color/colorPrimary"
         app:ccll_custom_shadow_radius="12dp"
         app:layout_constraintBottom_toTopOf="@+id/view3"
         app:layout_constraintEnd_toStartOf="@+id/cornerCutLinearLayout"
@@ -318,16 +384,16 @@
         android:orientation="vertical"
         app:ccll_child_corner_cut_type="oval"
         app:ccll_corner_cut_size="10dp"
-        app:ccll_custom_shadow_color="@color/darkmaterialblue"
+        app:ccll_custom_shadow_color="@color/colorPrimary"
         app:ccll_custom_shadow_radius="12dp"
         app:layout_constraintBottom_toTopOf="@+id/cornerCutLinearLayout"
-        app:layout_constraintEnd_toEndOf="@+id/cornerCutLinearLayout4"
+        app:layout_constraintEnd_toEndOf="@+id/cornerCutLinearLayout5"
         app:layout_constraintTop_toTopOf="@+id/view1">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/darkmaterialblue">
+            android:background="@color/colorPrimary">
 
             <ImageView
                 android:id="@+id/imageView6"
@@ -364,11 +430,11 @@
 
         android:layout_marginBottom="16dp"
 
-        android:background="@color/darkmaterialblue"
+        android:background="@color/colorPrimary"
         android:orientation="vertical"
         app:ccll_child_corner_cut_type="oval"
         app:ccll_corner_cut_size="10dp"
-        app:ccll_custom_shadow_color="@color/darkmaterialblue"
+        app:ccll_custom_shadow_color="@color/colorPrimary"
         app:ccll_custom_shadow_radius="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/view1"
@@ -412,19 +478,20 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
-        android:background="@color/darkmaterialblue"
+        android:background="@color/colorPrimary"
         android:orientation="vertical"
         app:ccll_child_corner_cut_type="oval"
         app:ccll_corner_cut_size="10dp"
-        app:ccll_custom_shadow_color="@color/darkmaterialblue"
+        app:ccll_custom_shadow_color="@color/cardprimaryColor"
         app:ccll_custom_shadow_radius="12dp"
         app:layout_constraintBottom_toTopOf="@+id/cornerCutLinearLayout2"
         app:layout_constraintEnd_toStartOf="@+id/cornerCutLinearLayout"
-        app:layout_constraintStart_toStartOf="@+id/cornerCutLinearLayout4">
+        app:layout_constraintStart_toStartOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:id="@+id/pomodoro">
 
             <ImageView
                 android:id="@+id/imageView3"

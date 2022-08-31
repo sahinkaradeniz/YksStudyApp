@@ -11,8 +11,8 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:windowLightStatusBar">true</item>
-        <item name="android:statusBarColor" >@color/krem</item>
+        <item name="android:statusBarColor" >@color/white</item>
         <!-- Customize your theme here. -->
-        <item name="android:colorBackground" >@color/krem</item>
+        <item name="android:colorBackground" >@color/black</item>
     </style>
 </resources>

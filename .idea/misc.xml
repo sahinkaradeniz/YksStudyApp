@@ -3,9 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/boxbutton.xml" value="0.3115" />
+        <entry key="app/src/main/res/drawable/ic_add_pomodoro.xml" value="0.254" />
+        <entry key="app/src/main/res/drawable/ic_baseline_manage_history_24.xml" value="0.325" />
+        <entry key="app/src/main/res/drawable/ic_baseline_motion_photos_paused_24.xml" value="0.325" />
+        <entry key="app/src/main/res/drawable/ic_play.xml" value="0.254" />
+        <entry key="app/src/main/res/drawable/ic_restart.xml" value="0.325" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1574074074074074" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2204254150390625" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2651275634765625" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.2526041666666667" />
+        <entry key="app/src/main/res/layout/fragment_pomodoro.xml" value="0.6398181760081387" />
       </map>
     </option>
   </component>

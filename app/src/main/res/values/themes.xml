@@ -11,8 +11,8 @@
         <item name="colorOnSecondary">@color/darkred</item>
         <!-- Status bar color. -->
         <item name="android:windowLightStatusBar">true</item>
-        <item name="android:statusBarColor" >@color/krem</item><!-- en üst saat kısmı rengi. -->
+        <item name="android:statusBarColor" >@color/white</item><!-- en üst saat kısmı rengi. -->
         <!-- Customize your theme here. -->
-        <item name="android:colorBackground" >@color/krem</item>
+        <item name="android:colorBackground" >@color/white</item>
     </style>
 </resources>

@@ -1,18 +1,20 @@
+package com.skapps.YksStudyApp.util
+
 import android.content.Context
 import android.content.SharedPreferences
 
-class LocalDataManager {
-    fun setSharedPreference(context: Context, key: String?, value: String?) {
-        val sharedPref: SharedPreferences =
-            context.getSharedPreferences(context.getPackageName(), Context.MODE_PRIVATE)
+class LocalDatabase(context: Context){
+
+    fun setSharedPreference(context: Context, key: String?, time: Long?) {
+        val sharedPref: SharedPreferences = context.getSharedPreferences(context.getPackageName(), Context.MODE_PRIVATE)
         val edit = sharedPref.edit()
-        edit.putString(key, value)
+        edit.putLong(key,time!!)
         edit.commit()
     }
 
-    fun getSharedPreference(context: Context, key: String?, defaultValue: String?): String {
+    fun getSharedPreference(context: Context, key: String?, defaultValue: Long?): Long {
         return context.getSharedPreferences(context.getPackageName(), Context.MODE_PRIVATE)
-            .getString(key, defaultValue).toString()
+            .getLong(key, defaultValue!!)
     }
 
     fun clearSharedPreference(context: Context) {

@@ -28,7 +28,7 @@
     <color name="colorPrimary">#448aff</color>
     <color name="colorPrimaryVariant">#005ecb</color>
     <color name="colorSecondary">#83b9ff</color>
-    <color name="grey">#333333</color>
-    <color name="dark_grey">#212121</color>
+    <color name="grey">#F7F6F6</color>
+
 
 </resources>

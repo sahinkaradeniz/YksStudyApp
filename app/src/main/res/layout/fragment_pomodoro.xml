@@ -23,7 +23,7 @@
             android:padding="6dp"
             android:src="@drawable/ic_play"
             app:layout_constraintEnd_toEndOf="@+id/circularProgressView"
-            app:layout_constraintTop_toTopOf="@+id/appCompatImageButton3"
+            app:layout_constraintTop_toTopOf="@+id/restartPomodoro"
             tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
 
         <TextView
@@ -40,31 +40,29 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/appCompatImageButton"
+            android:id="@+id/pauseButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/boxbutton"
             android:padding="6dp"
             android:src="@drawable/ic_baseline_motion_photos_paused_24"
-            app:layout_constraintBottom_toBottomOf="@+id/appCompatImageButton3"
-            app:layout_constraintStart_toStartOf="@+id/circularProgressView"
-            app:layout_constraintTop_toTopOf="@+id/appCompatImageButton3"
+            app:layout_constraintBottom_toBottomOf="@+id/restartPomodoro"
+            app:layout_constraintEnd_toStartOf="@+id/startChoronometre"
+            app:layout_constraintStart_toEndOf="@+id/restartPomodoro"
+            app:layout_constraintTop_toTopOf="@+id/restartPomodoro"
             app:layout_constraintVertical_bias="0.0"
             tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
 
         <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/appCompatImageButton3"
+            android:id="@+id/restartPomodoro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
             android:layout_marginTop="24dp"
             android:background="@drawable/boxbutton"
             android:padding="6dp"
             android:src="@drawable/ic_restart"
 
-            app:layout_constraintEnd_toStartOf="@+id/startChoronometre"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/appCompatImageButton"
+            app:layout_constraintStart_toStartOf="@+id/circularProgressView"
             app:layout_constraintTop_toBottomOf="@+id/circularProgressView"
             tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
 
@@ -76,7 +74,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton2"
+            app:layout_constraintTop_toBottomOf="@+id/addPomodoro"
             app:progress="60"
             app:progressBarColor="@color/colorPrimary"
             app:progressBarThickness="10dp" />
@@ -94,7 +92,7 @@
             app:layout_constraintTop_toTopOf="@+id/circularProgressView" />
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/addPomodoro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -116,7 +114,7 @@
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
 
-            app:layout_constraintTop_toBottomOf="@+id/appCompatImageButton3"
+            app:layout_constraintTop_toBottomOf="@+id/restartPomodoro"
             tools:layout_editor_absoluteX="20dp" />
 
         <TextView

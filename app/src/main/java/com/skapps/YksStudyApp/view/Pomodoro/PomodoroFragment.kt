@@ -1,25 +1,29 @@
 package com.skapps.YksStudyApp.view.Pomodoro
-import android.os.Build
+
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewModelScope
+import androidx.navigation.fragment.findNavController
+import com.google.android.material.timepicker.MaterialTimePicker
+import com.google.android.material.timepicker.TimeFormat
+import com.skapps.YksStudyApp.R
 import com.skapps.YksStudyApp.databinding.FragmentPomodoroBinding
-import com.skapps.YksStudyApp.util.CustomSharedPreferences
-import kotlinx.coroutines.launch
+import com.skapps.YksStudyApp.util.LocalDatabase
+import java.util.*
 
 
-class PomodoroFragment : Fragment() {
+class PomodoroFragment : Fragment(){
     private var _binding:FragmentPomodoroBinding?=null
     private val binding  get() = _binding
     private lateinit var viewModel: PomodoroViewModel
-    private var customSharedPreferences= CustomSharedPreferences()
-    private var destroyTime:Int = 0
+    private var pauseTime:Long =0L
+    private lateinit var localDatabase: LocalDatabase
+    private lateinit var picker: MaterialTimePicker
+    private lateinit var calendar: Calendar
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -28,36 +32,70 @@ class PomodoroFragment : Fragment() {
         return binding?.root
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        localDatabase= LocalDatabase(requireContext())
         viewModel= ViewModelProvider(this).get(PomodoroViewModel::class.java)
-
-        viewLifecycleOwner.lifecycleScope.launchWhenStarted{
-            viewModel.viewModelScope.launch {
-                viewModel.data.collect{
-               //     binding!!.choronometre.text=it.toString()
-                    destroyTime=it
-                }
-            }
+        pauseTime= localDatabase.getSharedPreference(requireContext(),"pauseTime",0L)
+        if (pauseTime != 0L){
+            viewModel.startTimer(pauseTime,requireContext().applicationContext)
         }
+        observeLiveData()
 
         binding!!.startChoronometre.setOnClickListener {
-
-        //    viewModel.setSharedPreference(requireContext(),"test","01.01")
-        }
-        binding!!.appCompatImageButton3.setOnClickListener {
-           val time= viewModel.getSharedPreference(requireContext(),"test","0")
-            binding!!.choronometre.text=time
-
+                viewModel.cancelTimer()
+                viewModel.startTimer(6000,requireContext().applicationContext)
         }
 
+        binding!!.pauseButton.setOnClickListener {
+            viewModel.cancelTimer()
+        }
+        binding!!.addPomodoro.setOnClickListener {
+            findNavController().navigate(R.id.action_pomodoroFragment_to_addPomodoroFragment)
+        }
 
     }
 
-
-    fun yasin():String{
-        return "yasin"
+    override fun onDestroy() {
+        super.onDestroy()
+        localDatabase.setSharedPreference(requireContext().applicationContext,"pauseTime", time = pauseTime)
     }
+
+    private fun observeLiveData(){
+        viewModel.time.observe(viewLifecycleOwner) {
+            it.let {
+                pauseTime=it
+                val seconds = (it / 1000).toInt() % 60
+                val minutes = (it / (1000 * 60) % 60).toInt()
+                binding!!.choronometre.text = "$minutes : $seconds"
+            }
+        }
+    }
+
+    @SuppressLint("Range")
+    fun timepic(){
+        val picker = MaterialTimePicker.Builder()
+            .setTimeFormat(TimeFormat.CLOCK_24H)
+            .setMinute(10)
+            .setTitleText("Select Appointment time")
+            .build()
+        picker.show(requireActivity().supportFragmentManager, picker.toString())
+
+        picker.addOnPositiveButtonClickListener {
+            calendar = Calendar.getInstance()
+            calendar[Calendar.HOUR_OF_DAY] = picker.hour
+            calendar[Calendar.MINUTE] = picker.minute
+            calendar[Calendar.SECOND] = 0
+            calendar[Calendar.MILLISECOND] =0
+            val hour=picker.hour
+            var total=hour*60*1000*1000*60
+            val minute=picker.minute
+            total=total+minute*1000*60
+            viewModel.startTimer(total.toLong(),requireContext())
+
+        }
+
+    }
+
 
 }

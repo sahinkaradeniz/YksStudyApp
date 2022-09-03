@@ -13,6 +13,7 @@ import com.google.android.material.timepicker.TimeFormat
 import com.skapps.YksStudyApp.R
 import com.skapps.YksStudyApp.databinding.FragmentPomodoroBinding
 import com.skapps.YksStudyApp.util.LocalDatabase
+import com.skapps.YksStudyApp.util.safeNavigate
 import java.util.*
 
 
@@ -22,25 +23,31 @@ class PomodoroFragment : Fragment(){
     private lateinit var viewModel: PomodoroViewModel
     private var pauseTime:Long =0L
     private lateinit var localDatabase: LocalDatabase
-    private lateinit var picker: MaterialTimePicker
+    private  var addTime:Long = 0L
     private lateinit var calendar: Calendar
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
+
         _binding= FragmentPomodoroBinding.inflate(inflater,container,false)
         return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         localDatabase= LocalDatabase(requireContext())
+
         viewModel= ViewModelProvider(this).get(PomodoroViewModel::class.java)
         pauseTime= localDatabase.getSharedPreference(requireContext(),"pauseTime",0L)
+
+        observeLiveData()
+
         if (pauseTime != 0L){
             viewModel.startTimer(pauseTime,requireContext().applicationContext)
         }
-        observeLiveData()
+
 
         binding!!.startChoronometre.setOnClickListener {
                 viewModel.cancelTimer()
@@ -51,9 +58,8 @@ class PomodoroFragment : Fragment(){
             viewModel.cancelTimer()
         }
         binding!!.addPomodoro.setOnClickListener {
-            findNavController().navigate(R.id.action_pomodoroFragment_to_addPomodoroFragment)
+            findNavController().safeNavigate(PomodoroFragmentDirections.actionPomodoroFragmentToAddPomodoroFragment())
         }
-
     }
 
     override fun onDestroy() {
@@ -70,6 +76,14 @@ class PomodoroFragment : Fragment(){
                 binding!!.choronometre.text = "$minutes : $seconds"
             }
         }
+    }
+
+    override fun onResume() {
+        viewModel= ViewModelProvider(this).get(PomodoroViewModel::class.java)
+        arguments?.getInt("time").let {
+            it?.let { it1 -> viewModel.startTimer(it*60*1000L,requireContext()) }
+        }
+        super.onResume()
     }
 
     @SuppressLint("Range")

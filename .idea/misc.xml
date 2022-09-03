@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/bg_bottom_sheet.xml" value="0.2225" />
         <entry key="app/src/main/res/drawable/boxbutton.xml" value="0.3115" />
         <entry key="app/src/main/res/drawable/ic_add_pomodoro.xml" value="0.254" />
+        <entry key="app/src/main/res/drawable/ic_baseline_history_24.xml" value="0.2225" />
         <entry key="app/src/main/res/drawable/ic_baseline_manage_history_24.xml" value="0.325" />
         <entry key="app/src/main/res/drawable/ic_baseline_motion_photos_paused_24.xml" value="0.325" />
         <entry key="app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.149" />
@@ -17,13 +19,16 @@
         <entry key="app/src/main/res/drawable/ic_timer.xml" value="0.2185" />
         <entry key="app/src/main/res/drawable/ic_todo.xml" value="0.2185" />
         <entry key="app/src/main/res/drawable/ic_todos.xml" value="0.2185" />
+        <entry key="app/src/main/res/drawable/pomodororoundend.xml" value="0.2225" />
         <entry key="app/src/main/res/drawable/shadowbackground.xml" value="0.2185" />
         <entry key="app/src/main/res/layout-land/fragment_add_pomodoro.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1574074074074074" />
-        <entry key="app/src/main/res/layout/fragment_add_pomodoro.xml" value="0.6426592797783933" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.15450643776824036" />
+        <entry key="app/src/main/res/layout/addpomodorocard.xml" value="1.3262997722258778" />
+        <entry key="app/src/main/res/layout/fragment_add_pomodoro.xml" value="0.5382830626450116" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.8660907127429806" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.2526041666666667" />
         <entry key="app/src/main/res/layout/fragment_pomodoro.xml" value="0.5349544072948328" />
+        <entry key="app/src/main/res/layout/pomodororoundend.xml" value="0.8454332552693209" />
       </map>
     </option>
   </component>

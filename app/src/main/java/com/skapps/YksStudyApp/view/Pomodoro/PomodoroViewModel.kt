@@ -1,12 +1,14 @@
 package com.skapps.YksStudyApp.view.Pomodoro
 
+import android.app.Application
 import android.content.Context
 import android.os.CountDownTimer
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.skapps.YksStudyApp.Base.BaseViewModel
 import com.skapps.YksStudyApp.util.LocalDatabase
 
-class PomodoroViewModel:ViewModel() {
+class PomodoroViewModel(application: Application):BaseViewModel(application) {
     private lateinit var localDatabase:LocalDatabase
      var time = MutableLiveData<Long>()
     private val cDF=100
@@ -50,6 +52,12 @@ class PomodoroViewModel:ViewModel() {
             }
         }
         (cTimer as CountDownTimer).start()
+    }
+    fun startControl(minute:Int,context: Context){
+        if (minute !=0){
+            val total=minute*1000*60L
+            startTimer(total, context)
+        }
     }
 
     //cancel timer

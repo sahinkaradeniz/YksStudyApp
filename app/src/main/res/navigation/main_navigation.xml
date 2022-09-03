@@ -33,5 +33,13 @@
         android:id="@+id/addPomodoroFragment"
         android:name="com.skapps.YksStudyApp.view.AddPomodoroDialog.AddPomodoroFragment"
         android:label="fragment_add_pomodoro"
-        tools:layout="@layout/fragment_add_pomodoro" />
+        tools:layout="@layout/fragment_add_pomodoro" >
+        <action
+            android:id="@+id/action_addPomodoroFragment_to_pomodoroFragment"
+            app:destination="@id/pomodoroFragment" />
+        <argument
+            android:name="time"
+            app:argType="long"
+            android:defaultValue="1000L" />
+    </dialog>
 </navigation>

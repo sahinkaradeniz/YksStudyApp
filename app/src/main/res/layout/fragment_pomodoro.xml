@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
+    android:backgroundTint="@android:color/transparent"
     android:fillViewport="false"
     tools:context=".view.Pomodoro.PomodoroFragment"
     tools:ignore="SpeakableTextPresentCheck">
@@ -72,7 +73,7 @@
             android:layout_height="240dp"
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addPomodoro"
             app:progress="60"
@@ -93,13 +94,12 @@
 
         <ImageButton
             android:id="@+id/addPomodoro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
-            android:padding="6dp"
+            android:background="@drawable/shadowbackground"
             android:src="@drawable/ic_add_pomodoro"
-            android:background="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="SpeakableTextPresentCheck" />
@@ -108,13 +108,13 @@
             android:id="@+id/overview_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:text="Genel Bakış"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"
-            android:textSize="16sp"
 
-            app:layout_constraintTop_toBottomOf="@+id/restartPomodoro"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@+id/pauseButton"
             tools:layout_editor_absoluteX="20dp" />
 
         <TextView
@@ -163,6 +163,18 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView333" />
+
+        <ImageButton
+            android:id="@+id/backPomodoro"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_back_40"
+            android:background="@drawable/shadowbackground"
+            app:layout_constraintBottom_toBottomOf="@+id/addPomodoro"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/addPomodoro"
+            tools:ignore="SpeakableTextPresentCheck" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

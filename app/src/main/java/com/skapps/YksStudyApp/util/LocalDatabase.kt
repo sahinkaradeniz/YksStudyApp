@@ -3,7 +3,7 @@ package com.skapps.YksStudyApp.util
 import android.content.Context
 import android.content.SharedPreferences
 
-class LocalDatabase(context: Context){
+class LocalDatabase(){
 
     fun setSharedPreference(context: Context, key: String?, time: Long?) {
         val sharedPref: SharedPreferences = context.getSharedPreferences(context.getPackageName(), Context.MODE_PRIVATE)

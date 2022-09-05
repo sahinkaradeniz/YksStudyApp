@@ -27,7 +27,13 @@
 
         <action
             android:id="@+id/action_pomodoroFragment_to_addPomodoroFragment"
-            app:destination="@id/addPomodoroFragment" />
+            app:destination="@id/addPomodoroFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/main_nav_graph"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_pomodoroFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <dialog
         android:id="@+id/addPomodoroFragment"

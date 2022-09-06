@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:animateLayoutChanges="true"
-    android:backgroundTint="@android:color/transparent"
-    android:fillViewport="false"
-    tools:context=".view.Pomodoro.PomodoroFragment"
-    tools:ignore="SpeakableTextPresentCheck">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:backgroundTint="@android:color/transparent"
+        android:fillViewport="false"
+        tools:context=".view.Pomodoro.PomodoroFragment"
+        tools:ignore="SpeakableTextPresentCheck">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
             android:fontFamily="@font/raleway"
             android:text="@string/pomodoro"
             android:textColor="@color/colorPrimary"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:textStyle="normal|bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,6 +34,7 @@
             android:id="@+id/toggle_button"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:layout_marginTop="24dp"
             android:background="@drawable/shadowbackground"
             android:contentDescription="@string/toggle_stopwatch"
             android:elevation="0dp"
@@ -45,24 +46,30 @@
             app:iconGravity="end"
             app:iconPadding="0dp"
             app:iconSize="28dp"
-            app:layout_constraintBottom_toBottomOf="@+id/reset_image_view"
+            app:iconTint="@color/white"
             app:layout_constraintEnd_toEndOf="@+id/circularProgressView"
-            app:layout_constraintTop_toTopOf="@+id/reset_image_view"
-            app:layout_constraintVertical_bias="0.0"
-            tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
-
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/reset_image_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/boxbutton"
-            android:padding="6dp"
-
-            android:src="@drawable/ic_restart"
+            app:layout_constraintStart_toEndOf="@+id/reset_image_view"
             app:layout_constraintStart_toStartOf="@+id/circularProgressView"
             app:layout_constraintTop_toBottomOf="@+id/circularProgressView"
+            tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/reset_image_view"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="32dp"
+            android:background="@android:color/transparent"
+            android:backgroundTint="@android:color/transparent"
+            android:contentDescription="@string/toggle_stopwatch"
+            android:visibility="visible"
+            app:backgroundTint="@android:color/transparent"
+            app:icon="@drawable/ic_restart"
+            app:iconGravity="top"
+            app:iconTint="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="@+id/circularProgressView"
+            app:layout_constraintEnd_toEndOf="@+id/circularProgressView"
+            app:layout_constraintStart_toStartOf="@+id/circularProgressView"
+            app:layout_constraintTop_toBottomOf="@+id/stopwatch_value_text_view"
             tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
 
         <com.github.guilhe.views.CircularProgressView
@@ -88,6 +95,7 @@
             android:textSize="32sp"
             app:layout_constraintBottom_toBottomOf="@+id/circularProgressView"
             app:layout_constraintEnd_toEndOf="@+id/circularProgressView"
+            app:layout_constraintHorizontal_bias="0.506"
             app:layout_constraintStart_toStartOf="@+id/circularProgressView"
             app:layout_constraintTop_toTopOf="@+id/circularProgressView" />
 
@@ -168,8 +176,8 @@
             android:layout_width="52dp"
             android:layout_height="52dp"
             android:layout_marginStart="16dp"
-            android:src="@drawable/ic_back_40"
             android:background="@drawable/shadowbackground"
+            android:src="@drawable/ic_back_40"
             app:layout_constraintBottom_toBottomOf="@+id/addPomodoro"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/addPomodoro"
@@ -177,4 +185,4 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+    </ScrollView>

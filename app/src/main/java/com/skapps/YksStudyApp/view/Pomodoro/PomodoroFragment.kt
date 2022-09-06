@@ -29,14 +29,14 @@ class PomodoroFragment : Fragment(){
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding= FragmentPomodoroBinding.inflate(inflater,container,false)
         observeLiveData()
-        binding!!.startChoronometre.setOnClickListener {
+       /** binding!!.startChoronometre.setOnClickListener {
             viewModel.cancelTimer()
             if(pauseTime<3L){
                 viewModel.startTimer(25*1000*60,requireContext())
             }else{
                 viewModel.startTimer(pauseTime,requireContext())
             }
-        }
+        } */
         arguments?.getInt("time").let {
             it?.let {
                     it1 -> viewModel.onCreatePause(requireContext(),it*60*1000) }
@@ -46,9 +46,9 @@ class PomodoroFragment : Fragment(){
             localDatabase.setSharedPreference(requireContext(),"pause",pauseTime)
             findNavController().navigate(PomodoroFragmentDirections.actionPomodoroFragmentToHomeFragment())
         }
-        binding!!.pauseButton.setOnClickListener {
+       /* binding!!.pauseButton.setOnClickListener {
             viewModel.cancelTimer()
-        }
+        }*/
         binding!!.addPomodoro.setOnClickListener {
             viewModel.cancelTimer()
            findNavController().navigate(R.id.addPomodoroFragment)
@@ -67,7 +67,7 @@ class PomodoroFragment : Fragment(){
                 pauseTime=it
                 val seconds = (it / 1000).toInt() % 60
                 val minutes = (it / (1000 * 60) % 60).toInt()
-                binding!!.choronometre.text = "$minutes : $seconds"
+              //  binding!!.choronometre.text = "$minutes : $seconds"
             }
         }
     }

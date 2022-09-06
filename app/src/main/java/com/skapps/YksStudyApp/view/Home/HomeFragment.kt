@@ -1,15 +1,15 @@
 package com.skapps.YksStudyApp.view.Home
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
-import com.skapps.YksStudyApp.R
+import androidx.fragment.app.Fragment
 import com.skapps.YksStudyApp.databinding.FragmentHomeBinding
+import com.skapps.YksStudyApp.view.Pomodoro.PomodoroActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -21,7 +21,8 @@ class HomeFragment : Fragment() {
         _binding=FragmentHomeBinding.inflate(inflater,container,false)
         printDifferenceDateForHours()
         binding!!.pomodoro.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_pomodoroFragment)
+            val intent = Intent(requireContext(), PomodoroActivity::class.java)
+            startActivity(intent)
         }
         return binding?.root
     }

@@ -9,10 +9,18 @@ import android.os.IBinder
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
+import com.skapps.YksStudyApp.Model.LogPomodoro
 import com.skapps.YksStudyApp.R
 import com.skapps.YksStudyApp.database.LocalDatabase
+import com.skapps.YksStudyApp.database.LogPomDatabase
+import com.skapps.YksStudyApp.database.PomodoroDatabase
 import com.skapps.YksStudyApp.view.Pomodoro.PomodoroActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 import java.util.*
+import kotlin.math.log
 
 
 class PomodoroService : Service() {
@@ -42,10 +50,9 @@ class PomodoroService : Service() {
     private var isStopWatchRunning = false
     private var isStartControl=true
     var cTimer: CountDownTimer? = null
-
     private var updateTimer = Timer()
-  //  private var stopwatchTimer = Timer()
     private var timePause:Long=timeElapsed.toLong()
+    private var logPomodoro= LogPomodoro(date = "01.01.2000", time = 25, activity = "Diğer")
     // Getting access to the NotificationManager
     private lateinit var notificationManager: NotificationManager
 
@@ -70,14 +77,18 @@ class PomodoroService : Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         createChannel()
         getNotificationManager()
+
         val action = intent?.getStringExtra(IZLEME_DURDUR)!!
         Log.d("Stopwatch", "onStartCommand Action: $action")
         when (action) {
             START ->{
                 if (isStartControl){
-                    val test =intent.getIntExtra("custompomodoro",31)
-                    Log.e("Stopwatch", "test: ${test}")
-                    timePause=test*1000*60L
+                    val custompomodoro =intent.getIntExtra("custompomodoro",31)
+                    logPomodoro.activity= intent.getStringExtra("logactivity")
+                    logPomodoro.time=custompomodoro
+                    Log.e("Stopwatch", "test: ${custompomodoro}")
+                    Log.e("Stopwatch", "test: ${logPomodoro.activity}")
+                    timePause=custompomodoro*1000*60L
                     timeElapsed=timePause.toInt()
                     startStopwatch()
                     isStartControl=false
@@ -163,6 +174,11 @@ class PomodoroService : Service() {
 
              override fun onFinish() {
                  pauseStopwatch()
+                 GlobalScope.launch{
+                     logPomodoro.date=System.nanoTime().toString()
+                     saveRoom(logPomodoro)
+                     Log.e("PomodoroService", "Savetest succes: ${logPomodoro.activity}")
+                 }
              }
          }
         (cTimer as CountDownTimer).start()
@@ -172,6 +188,10 @@ class PomodoroService : Service() {
      * Bu işlev kronometreyi duraklatır
      * Kronometrenin mevcut durumunun bir güncellemesini gönderir
      * */
+    private suspend fun saveRoom(logPomodoro: LogPomodoro){
+        val dao =LogPomDatabase(getApplication()).logPomDao()
+        dao.insert(logPomodoro)
+    }
     private fun pauseStopwatch() {
         // stopwatchTimer.cancel()
         cTimer?.cancel()

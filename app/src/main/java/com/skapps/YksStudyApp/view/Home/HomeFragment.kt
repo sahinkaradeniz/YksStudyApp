@@ -2,13 +2,16 @@ package com.skapps.YksStudyApp.view.Home
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.skapps.YksStudyApp.databinding.FragmentHomeBinding
+import com.skapps.YksStudyApp.util.getTime
 import com.skapps.YksStudyApp.view.Pomodoro.PomodoroActivity
 import java.text.SimpleDateFormat
 import java.util.*
@@ -17,13 +20,16 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding?=null
     private val binding get() = _binding
     private lateinit var countDownTimer:CountDownTimer
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding=FragmentHomeBinding.inflate(inflater,container,false)
         printDifferenceDateForHours()
         binding!!.pomodoro.setOnClickListener {
             val intent = Intent(requireContext(), PomodoroActivity::class.java)
+            getTime()
             startActivity(intent)
         }
+
         return binding?.root
     }
 

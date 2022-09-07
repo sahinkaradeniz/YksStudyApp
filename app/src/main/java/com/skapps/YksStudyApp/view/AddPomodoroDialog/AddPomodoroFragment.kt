@@ -28,9 +28,10 @@ class AddPomodoroFragment : BottomSheetDialogFragment(),HistoryClickListener{
     private val binding get() = _binding
     private lateinit var viewModel: AddPomodoroViewModel
     private  var time:Int=0
+    private var logActivity:String="Diğer"
     private val pomodoroAdapter=HistoryPomodoroAdapter(arrayListOf(),this)
     private var addhistory= Pomodoro("Diğer",25)
-    private var logPomodoro:LogPomodoro?=null
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -61,15 +62,13 @@ class AddPomodoroFragment : BottomSheetDialogFragment(),HistoryClickListener{
         })
         binding!!.radioGroup.setOnCheckedChangeListener { group, checkedId ->
         addhistory.activity=viewModel.onRadioButtonClicked(checkedId,requireContext())
+        logActivity=viewModel.onRadioButtonClicked(checkedId,requireContext())
         }
         binding!!.button.setOnClickListener {
-            addhistory.activity=addhistory.activity
-            addhistory.time=addhistory.time
-
-            logPomodoro?.activity
             viewModel.storeInRoom(addhistory)
             val intent = Intent(requireContext(), PomodoroActivity::class.java)
             intent.putExtra("addpomodoro" ,time)
+            intent.putExtra("activity",logActivity)
             startActivity(intent)
         }
 
@@ -87,10 +86,12 @@ class AddPomodoroFragment : BottomSheetDialogFragment(),HistoryClickListener{
     private fun startPomodoro(time:Int){
         val intent = Intent(requireContext(), PomodoroActivity::class.java)
         intent.putExtra("addpomodoro" ,time)
+        intent.putExtra("activity",logActivity)
         startActivity(intent)
     }
 
     override fun onHistoryClicked(pomodoro: Pomodoro) {
+        logActivity= pomodoro.activity.toString()
         pomodoro.time?.let { startPomodoro(it) }
     }
 }

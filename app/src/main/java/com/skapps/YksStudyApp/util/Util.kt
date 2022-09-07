@@ -1,15 +1,15 @@
 package com.skapps.YksStudyApp.util
 
 import android.annotation.SuppressLint
-import android.app.Activity
-import android.content.Context
-import android.os.Bundle
+import android.os.Build
 import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import java.util.*
+
 private lateinit var calendar: Calendar
 fun NavController.safeNavigate(direction: NavDirections) {
     Log.d("safe", "Click happened")
@@ -19,8 +19,9 @@ fun NavController.safeNavigate(direction: NavDirections) {
     }
 }
 
-fun NavController.clearBackNavigate(){
-
+@RequiresApi(Build.VERSION_CODES.O)
+fun getTime() {
+   val dateStr = DateFormatDate.format(date); android.text.format.DateFormat.getTimeFormat(context)
 }
 
 @SuppressLint("Range")

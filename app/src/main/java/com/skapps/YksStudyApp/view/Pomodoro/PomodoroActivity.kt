@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +14,7 @@ import com.skapps.YksStudyApp.R
 import com.skapps.YksStudyApp.Service.PomodoroService
 import com.skapps.YksStudyApp.databinding.ActivityPomodoroBinding
 import com.skapps.YksStudyApp.view.AddPomodoroDialog.AddPomodoroFragment
+import kotlin.math.log
 
 class PomodoroActivity : AppCompatActivity() {
 
@@ -24,7 +24,8 @@ class PomodoroActivity : AppCompatActivity() {
     private var  addPomodroTime:Int?=null
     private lateinit var statusReceiver: BroadcastReceiver
     private lateinit var timeReceiver: BroadcastReceiver
-    private var totalProgress:Float?=null
+    private var logactivitiy:String?=null
+    private var logtime:Int?=null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,7 +49,9 @@ class PomodoroActivity : AppCompatActivity() {
     }
     override fun onStart() {
         super.onStart()
-       addPomodroTime=intent.getIntExtra("addpomodoro",25)
+         addPomodroTime=intent.getIntExtra("addpomodoro",25)
+         logactivitiy= intent.getStringExtra("activity")
+         logtime=addPomodroTime
         Log.e("Pomodoro Activity", "value: ${addPomodroTime}")
         if (addPomodroTime!=25){
             startStopwatch()
@@ -142,6 +145,11 @@ class PomodoroActivity : AppCompatActivity() {
         val pomodoroService = Intent(this, PomodoroService::class.java)
         pomodoroService.putExtra(PomodoroService.IZLEME_DURDUR , PomodoroService.START)
         pomodoroService.putExtra("custompomodoro" , addPomodroTime)
+        if (logactivitiy!=null){
+            pomodoroService.putExtra("logactivity",logactivitiy)
+        }else{
+            pomodoroService.putExtra("logactivity","Diğer")
+        }
        // totalProgress=addPomodroTime!!*1000*60F
         startService(pomodoroService)
     }

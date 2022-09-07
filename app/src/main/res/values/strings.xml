@@ -7,4 +7,5 @@
     <string name="reset_stopwatch">Reset Stopwatch</string>
     <string name="toggle_stopwatch">Toggle Stopwatch</string>
     <string name="stopwatch">Stopwatch</string>
+    <string name="_00_00">00 : 00</string>
 </resources>

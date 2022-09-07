@@ -1,22 +1,22 @@
 package com.skapps.YksStudyApp.view.AddPomodoroDialog
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.addCallback
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.skapps.YksStudyApp.Adapter.HistoryClickListener
 import com.skapps.YksStudyApp.Adapter.HistoryPomodoroAdapter
+import com.skapps.YksStudyApp.Model.LogPomodoro
 import com.skapps.YksStudyApp.Model.Pomodoro
 import com.skapps.YksStudyApp.R
+import com.skapps.YksStudyApp.Service.PomodoroService
+import com.skapps.YksStudyApp.database.LocalDatabase
 import com.skapps.YksStudyApp.databinding.FragmentAddPomodoroBinding
-import com.skapps.YksStudyApp.util.LocalDatabase
+import com.skapps.YksStudyApp.view.Pomodoro.PomodoroActivity
 import com.warkiz.widget.IndicatorSeekBar
 import com.warkiz.widget.OnSeekChangeListener
 import com.warkiz.widget.SeekParams
@@ -30,7 +30,7 @@ class AddPomodoroFragment : BottomSheetDialogFragment(),HistoryClickListener{
     private  var time:Int=0
     private val pomodoroAdapter=HistoryPomodoroAdapter(arrayListOf(),this)
     private var addhistory= Pomodoro("Diğer",25)
-
+    private var logPomodoro:LogPomodoro?=null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -63,11 +63,15 @@ class AddPomodoroFragment : BottomSheetDialogFragment(),HistoryClickListener{
         addhistory.activity=viewModel.onRadioButtonClicked(checkedId,requireContext())
         }
         binding!!.button.setOnClickListener {
-            addhistory.time=time
-            viewModel.storeInRoom(addhistory)
-            startPomodoro(time,R.id.action_addPomodoroFragment_to_pomodoroFragment)
-        }
+            addhistory.activity=addhistory.activity
+            addhistory.time=addhistory.time
 
+            logPomodoro?.activity
+            viewModel.storeInRoom(addhistory)
+            val intent = Intent(requireContext(), PomodoroActivity::class.java)
+            intent.putExtra("addpomodoro" ,time)
+            startActivity(intent)
+        }
 
         super.onViewCreated(view, savedInstanceState)
     }
@@ -80,15 +84,13 @@ class AddPomodoroFragment : BottomSheetDialogFragment(),HistoryClickListener{
 
 
 
-    private fun startPomodoro(time:Int,destination:Int){
-        val bundle = Bundle()
-        bundle.putInt("time",time)
-        findNavController().navigate(destination,bundle)
-        val database=LocalDatabase()
-      database.setSharedPreference(requireContext(),"pauseTime",time*60*1000L)
+    private fun startPomodoro(time:Int){
+        val intent = Intent(requireContext(), PomodoroActivity::class.java)
+        intent.putExtra("addpomodoro" ,time)
+        startActivity(intent)
     }
 
     override fun onHistoryClicked(pomodoro: Pomodoro) {
-        pomodoro.time?.let { startPomodoro(it,R.id.action_addPomodoroFragment_to_pomodoroFragment) }
+        pomodoro.time?.let { startPomodoro(it) }
     }
 }

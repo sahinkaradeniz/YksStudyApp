@@ -57,6 +57,7 @@
             android:id="@+id/reset_image_view"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:layout_marginStart="1dp"
             android:layout_marginBottom="32dp"
             android:background="@android:color/transparent"
             android:backgroundTint="@android:color/transparent"
@@ -69,7 +70,6 @@
             app:layout_constraintBottom_toBottomOf="@+id/circularProgressView"
             app:layout_constraintEnd_toEndOf="@+id/circularProgressView"
             app:layout_constraintStart_toStartOf="@+id/circularProgressView"
-            app:layout_constraintTop_toBottomOf="@+id/stopwatch_value_text_view"
             tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
 
         <com.github.guilhe.views.CircularProgressView
@@ -77,22 +77,25 @@
             android:layout_width="240dp"
             android:layout_height="240dp"
             android:layout_marginTop="16dp"
-            android:background="@drawable/round_shape"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addPomodoro"
-            app:progress="60"
             app:progressBarColor="@color/colorPrimary"
+            app:progress="100"
             app:progressBarThickness="10dp" />
 
         <TextView
             android:id="@+id/stopwatch_value_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="00 : 00"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="16dp"
+            android:text="25 : 00"
             android:textColor="@color/colorPrimary"
-            android:textSize="32sp"
+            android:textSize="40sp"
             app:layout_constraintBottom_toBottomOf="@+id/circularProgressView"
             app:layout_constraintEnd_toEndOf="@+id/circularProgressView"
             app:layout_constraintHorizontal_bias="0.506"

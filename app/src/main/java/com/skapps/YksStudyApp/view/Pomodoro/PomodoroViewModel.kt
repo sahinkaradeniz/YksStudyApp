@@ -5,10 +5,10 @@ import android.content.Context
 import android.os.CountDownTimer
 import androidx.lifecycle.MutableLiveData
 import com.skapps.YksStudyApp.Base.BaseViewModel
-import com.skapps.YksStudyApp.util.LocalDatabase
+import com.skapps.YksStudyApp.database.LocalDatabase
 
 class PomodoroViewModel(application: Application):BaseViewModel(application) {
-    private  var localDatabase=LocalDatabase()
+    private  var localDatabase= LocalDatabase()
      var time = MutableLiveData<Long>()
     var cTimer: CountDownTimer? = null
     var isCounterRunning = false

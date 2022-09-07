@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 class AddPomodoroViewModel(application: Application):BaseViewModel(application) {
 
     val pomodoroList = MutableLiveData<List<Pomodoro>>()
-    val dao = PomodoroDatabase(getApplication()).countryDao()
+    val dao = PomodoroDatabase(getApplication()).pomodoroDao()
   //  val pomodoroAllItem: LiveData<MutableList<HistoryPomodoro>> = pomodoroRepository.allHistoryItems.asLiveData()
   fun storeInRoom(pomodoro: Pomodoro) {
       var k=0
@@ -55,7 +55,7 @@ class AddPomodoroViewModel(application: Application):BaseViewModel(application) 
       }
     fun getDataRoom() {
         launch {
-            pomodoroList.value= PomodoroDatabase(getApplication()).countryDao().getAllHistory()
+            pomodoroList.value= PomodoroDatabase(getApplication()).pomodoroDao().getAllHistory()
         }
     }
 

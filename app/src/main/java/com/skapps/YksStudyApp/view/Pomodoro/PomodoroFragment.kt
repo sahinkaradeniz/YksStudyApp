@@ -9,9 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.skapps.YksStudyApp.R
 import com.skapps.YksStudyApp.databinding.FragmentPomodoroBinding
-import com.skapps.YksStudyApp.util.LocalDatabase
-import com.skapps.YksStudyApp.util.safeNavigate
-
+import com.skapps.YksStudyApp.database.LocalDatabase
 
 
 class PomodoroFragment : Fragment(){
@@ -19,7 +17,7 @@ class PomodoroFragment : Fragment(){
     private val binding  get() = _binding
     private lateinit var viewModel:PomodoroViewModel
     private var pauseTime:Long =0L
-    private  var localDatabase=LocalDatabase()
+    private  var localDatabase= LocalDatabase()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel= ViewModelProvider(this).get(PomodoroViewModel::class.java)
@@ -42,8 +40,7 @@ class PomodoroFragment : Fragment(){
                     it1 -> viewModel.onCreatePause(requireContext(),it*60*1000) }
         }
         binding!!.backPomodoro.setOnClickListener {
-            localDatabase.removeSharedPreference(requireContext(),"pause")
-            localDatabase.setSharedPreference(requireContext(),"pause",pauseTime)
+
             findNavController().navigate(PomodoroFragmentDirections.actionPomodoroFragmentToHomeFragment())
         }
        /* binding!!.pauseButton.setOnClickListener {
@@ -59,7 +56,7 @@ class PomodoroFragment : Fragment(){
 
     override fun onDestroy() {
         super.onDestroy()
-        localDatabase.setSharedPreference(requireContext().applicationContext,"pause", time = pauseTime)
+  //      localDatabase.setSharedPreference(requireContext().applicationContext,"pause", time = pauseTime)
     }
     private fun observeLiveData(){
         viewModel.time.observe(viewLifecycleOwner) {

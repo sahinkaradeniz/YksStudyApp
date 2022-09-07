@@ -29,9 +29,9 @@
         <entry key="app/src/main/res/drawable/shadowbackground.xml" value="0.2185" />
         <entry key="app/src/main/res/layout-land/fragment_add_pomodoro.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1574074074074074" />
-        <entry key="app/src/main/res/layout/activity_pomodoro.xml" value="0.6818791946308724" />
+        <entry key="app/src/main/res/layout/activity_pomodoro.xml" value="0.67" />
         <entry key="app/src/main/res/layout/addpomodorocard.xml" value="1.3262997722258778" />
-        <entry key="app/src/main/res/layout/fragment_add_pomodoro.xml" value="0.5382830626450116" />
+        <entry key="app/src/main/res/layout/fragment_add_pomodoro.xml" value="0.6771594054184491" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.8660907127429806" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.2526041666666667" />
         <entry key="app/src/main/res/layout/fragment_pomodoro.xml" value="0.596931659693166" />

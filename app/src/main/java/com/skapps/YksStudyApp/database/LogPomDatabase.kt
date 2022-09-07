@@ -4,20 +4,20 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.skapps.YksStudyApp.Model.Pomodoro
-import com.skapps.YksStudyApp.dao.PomodoroDao
+import com.skapps.YksStudyApp.Model.LogPomodoro
+import com.skapps.YksStudyApp.dao.LogPomDao
 
 
-@Database(entities = arrayOf(Pomodoro::class),version = 2, exportSchema = false)
-abstract class PomodoroDatabase : RoomDatabase() {
+@Database(entities = arrayOf(LogPomodoro::class),version = 2, exportSchema = false)
+abstract class LogPomDatabase : RoomDatabase() {
 
-    abstract fun pomodoroDao() : PomodoroDao
+    abstract fun logPomDao() : LogPomDao
 
     //Singleton
 
     companion object {
 
-        @Volatile private var instance : PomodoroDatabase? = null
+        @Volatile private var instance :LogPomDatabase? = null
 
         private val lock = Any()
 
@@ -29,7 +29,7 @@ abstract class PomodoroDatabase : RoomDatabase() {
 
 
         private fun makeDatabase(context : Context) = Room.databaseBuilder(
-            context.applicationContext,PomodoroDatabase::class.java,"pomodorodatabase"
+            context.applicationContext,LogPomDatabase::class.java,"logPomodorodatabase"
         ).build()
     }
 }

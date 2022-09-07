@@ -4,11 +4,13 @@ import android.app.*
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
+import android.os.CountDownTimer
 import android.os.IBinder
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.skapps.YksStudyApp.R
+import com.skapps.YksStudyApp.database.LocalDatabase
 import com.skapps.YksStudyApp.view.Pomodoro.PomodoroActivity
 import java.util.*
 
@@ -36,12 +38,14 @@ class PomodoroService : Service() {
         const val STOPWATCH_STATUS = "STOPWATCH_STATUS"
     }
 
-    private var timeElapsed: Int = 6
+    private var timeElapsed: Int = 25*60*1000
     private var isStopWatchRunning = false
+    private var isStartControl=true
+    var cTimer: CountDownTimer? = null
 
     private var updateTimer = Timer()
-    private var stopwatchTimer = Timer()
-
+  //  private var stopwatchTimer = Timer()
+    private var timePause:Long=timeElapsed.toLong()
     // Getting access to the NotificationManager
     private lateinit var notificationManager: NotificationManager
 
@@ -55,22 +59,32 @@ class PomodoroService : Service() {
         return null
     }
 
-
     /**
-      * onStartCommand(), bir istemci hizmeti her başlattığında çağrılır
-      * startService kullanarak (Niyet amacı)
-      * Bu hizmetin hangi eylem için çağrıldığını kontrol edeceğiz ve ardından
-      * buna göre hareket edin. Eylem, başlatmak için kullanılan niyetten çıkarılır.
-      * bu servis.
-      * */
+     * onStartCommand(), bir istemci hizmeti her başlattığında çağrılır
+     * startService kullanarak (Niyet amacı)
+     * Bu hizmetin hangi eylem için çağrıldığını kontrol edeceğiz ve ardından
+     * buna göre hareket edin. Eylem, başlatmak için kullanılan niyetten çıkarılır.
+     * bu servis.
+     * */
+
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         createChannel()
         getNotificationManager()
         val action = intent?.getStringExtra(IZLEME_DURDUR)!!
         Log.d("Stopwatch", "onStartCommand Action: $action")
-
         when (action) {
-            START -> startStopwatch()
+            START ->{
+                if (isStartControl){
+                    val test =intent.getIntExtra("custompomodoro",31)
+                    Log.e("Stopwatch", "test: ${test}")
+                    timePause=test*1000*60L
+                    timeElapsed=timePause.toInt()
+                    startStopwatch()
+                    isStartControl=false
+                }else{
+                    startStopwatch()
+                }
+            }
             PAUSE -> pauseStopwatch()
             RESET -> resetStopwatch()
             DURUM_AL -> sendStatus()
@@ -123,7 +137,8 @@ class PomodoroService : Service() {
     private fun startStopwatch() {
         isStopWatchRunning = true
         sendStatus()
-        stopwatchTimer = Timer()
+       // stopwatchTimer = Timer()
+      /*
         stopwatchTimer.scheduleAtFixedRate(object : TimerTask() {
             override fun run() {
                 val stopwatchIntent = Intent()
@@ -134,6 +149,23 @@ class PomodoroService : Service() {
                 sendBroadcast(stopwatchIntent)
             }
         }, 0, 1000)
+        */
+        //timePause
+         cTimer = object : CountDownTimer(timePause, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                val stopwatchIntent = Intent()
+                stopwatchIntent.action = STOPWATCH_TICK
+                timePause=millisUntilFinished
+                timeElapsed =millisUntilFinished.toInt()
+                stopwatchIntent.putExtra(GECEN_SURE, timeElapsed)
+                sendBroadcast(stopwatchIntent)
+            }
+
+             override fun onFinish() {
+                 pauseStopwatch()
+             }
+         }
+        (cTimer as CountDownTimer).start()
     }
 
     /*
@@ -141,7 +173,8 @@ class PomodoroService : Service() {
      * Kronometrenin mevcut durumunun bir güncellemesini gönderir
      * */
     private fun pauseStopwatch() {
-        stopwatchTimer.cancel()
+        // stopwatchTimer.cancel()
+        cTimer?.cancel()
         isStopWatchRunning = false
         sendStatus()
     }
@@ -154,6 +187,7 @@ class PomodoroService : Service() {
         pauseStopwatch()
         timeElapsed = 0
         sendStatus()
+        isStartControl=true
     }
 
     /*
@@ -196,9 +230,10 @@ class PomodoroService : Service() {
         } else {
             "Pomodoro Tamamlandı!"
         }
+        val seconds = (timeElapsed/ 1000) % 60
+        val minutes = (timeElapsed / (1000 * 60) % 60)
+        //  binding!!.choronometre.text = "$minutes : $seconds"
 
-        val minutes: Int = timeElapsed.div(60)
-        val seconds: Int = timeElapsed.rem(60)
 
         val intent = Intent(this, PomodoroActivity::class.java)
        //val pIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT)

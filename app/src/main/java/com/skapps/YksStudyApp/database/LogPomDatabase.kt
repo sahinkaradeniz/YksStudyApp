@@ -8,7 +8,7 @@ import com.skapps.YksStudyApp.Model.LogPomodoro
 import com.skapps.YksStudyApp.dao.LogPomDao
 
 
-@Database(entities = arrayOf(LogPomodoro::class),version = 2, exportSchema = false)
+@Database(entities = arrayOf(LogPomodoro::class),version = 4, exportSchema = false)
 abstract class LogPomDatabase : RoomDatabase() {
 
     abstract fun logPomDao() : LogPomDao

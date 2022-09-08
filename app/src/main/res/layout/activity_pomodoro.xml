@@ -122,7 +122,7 @@
             android:text="Genel Bakış"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"
-
+            android:fontFamily="@font/raleway"
             android:textSize="16sp"
             app:layout_constraintTop_toBottomOf="@+id/toggle_button"
             tools:layout_editor_absoluteX="20dp" />
@@ -133,6 +133,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="Geçmiş"
+            android:fontFamily="@font/raleway"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@+id/history_chart"
@@ -157,6 +158,7 @@
             android:text="Aktiviteler"
             android:textColor="@color/black"
             android:textSize="14sp"
+            android:fontFamily="@font/raleway"
             app:layout_constraintStart_toStartOf="@+id/history_chart"
             app:layout_constraintTop_toBottomOf="@+id/history_chart" />
 
@@ -184,6 +186,20 @@
             app:layout_constraintBottom_toBottomOf="@+id/addPomodoro"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/addPomodoro"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <ImageButton
+            android:id="@+id/historyPomodoro"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/shadowbackground"
+            android:src="@drawable/ic_baseline_history_24"
+            app:layout_constraintEnd_toEndOf="@+id/addPomodoro"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/addPomodoro"
+            app:layout_constraintTop_toBottomOf="@+id/addPomodoro"
             tools:ignore="SpeakableTextPresentCheck" />
 
 

@@ -1,14 +1,19 @@
 package com.skapps.YksStudyApp.util
 
 import android.annotation.SuppressLint
+import android.app.DownloadManager.COLUMN_ID
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
+import androidx.room.RoomMasterTable.TABLE_NAME
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
 import java.util.*
+
 
 private lateinit var calendar: Calendar
 fun NavController.safeNavigate(direction: NavDirections) {
@@ -21,7 +26,16 @@ fun NavController.safeNavigate(direction: NavDirections) {
 
 @RequiresApi(Build.VERSION_CODES.O)
 fun getTime() {
-   val dateStr = DateFormatDate.format(date); android.text.format.DateFormat.getTimeFormat(context)
+    fun now(): String {
+        return SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
+    }
+    val currentYear = SimpleDateFormat("yyyy",Locale.getDefault()).format(Date())
+    val currentMonth = SimpleDateFormat("MM",Locale.getDefault()).format(Date())
+    val currentDay = SimpleDateFormat("dd",Locale.getDefault()).format(Date())
+    val currentHour = SimpleDateFormat("HH",Locale.getDefault()).format(Date())
+    val currentminute = SimpleDateFormat("mm",Locale.getDefault()).format(Date())
+    Log.e("Util.date",currentHour)
+    Log.e("Util.date",now())
 }
 
 @SuppressLint("Range")

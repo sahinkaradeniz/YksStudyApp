@@ -26,7 +26,6 @@ class HomeFragment : Fragment() {
         printDifferenceDateForHours()
         binding!!.pomodoro.setOnClickListener {
             val intent = Intent(requireContext(), PomodoroActivity::class.java)
-            getTime()
             startActivity(intent)
         }
 

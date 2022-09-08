@@ -9,6 +9,7 @@ import android.os.IBinder
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
+import com.skapps.YksStudyApp.Model.DateClass
 import com.skapps.YksStudyApp.Model.LogPomodoro
 import com.skapps.YksStudyApp.R
 import com.skapps.YksStudyApp.database.LocalDatabase
@@ -19,6 +20,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
 import java.util.*
 import kotlin.math.log
 
@@ -52,7 +55,11 @@ class PomodoroService : Service() {
     var cTimer: CountDownTimer? = null
     private var updateTimer = Timer()
     private var timePause:Long=timeElapsed.toLong()
-    private var logPomodoro= LogPomodoro(date = "01.01.2000", time = 25, activity = "Diğer")
+    private var date:DateClass?=null
+    val calender = Calendar.getInstance()
+    private var logPomodoro= LogPomodoro(activity = "Diğer",time = 25,calender.get(Calendar.YEAR).toString(),
+        SimpleDateFormat("MM",Locale.getDefault()).format(Date()).toString(),calender.get(Calendar.DAY_OF_MONTH).toString(),calender.get(Calendar.WEEK_OF_YEAR).toString(),SimpleDateFormat("HH",Locale.getDefault()).format(Date()).toString(),SimpleDateFormat("mm",Locale.getDefault()).format(Date()).toString())
+
     // Getting access to the NotificationManager
     private lateinit var notificationManager: NotificationManager
 
@@ -162,7 +169,7 @@ class PomodoroService : Service() {
         }, 0, 1000)
         */
         //timePause
-         cTimer = object : CountDownTimer(timePause, 1000) {
+         cTimer = object : CountDownTimer(5*1000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val stopwatchIntent = Intent()
                 stopwatchIntent.action = STOPWATCH_TICK
@@ -175,7 +182,7 @@ class PomodoroService : Service() {
              override fun onFinish() {
                  pauseStopwatch()
                  GlobalScope.launch{
-                     logPomodoro.date=System.nanoTime().toString()
+                   //  logPomodoro.date= DateClass(calender.get(Calendar.YEAR),calender.get(Calendar.MONTH),calender.get(Calendar.DAY_OF_MONTH),calender.get(Calendar.WEEK_OF_YEAR),calender.get(Calendar.HOUR_OF_DAY),calender.get(Calendar.MINUTE))
                      saveRoom(logPomodoro)
                      Log.e("PomodoroService", "Savetest succes: ${logPomodoro.activity}")
                  }

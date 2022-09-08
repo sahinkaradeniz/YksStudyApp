@@ -15,4 +15,7 @@
         <!-- Customize your theme here. -->
         <item name="android:colorBackground" >@color/white</item>
     </style>
+    <style name="custom_alert_dialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowBackground">@drawable/shadowbackground</item>
+    </style>
 </resources>

@@ -8,13 +8,10 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.skapps.YksStudyApp.Adapter.HistoryClickListener
+import com.skapps.YksStudyApp.Listener.HistoryClickListener
 import com.skapps.YksStudyApp.Adapter.HistoryPomodoroAdapter
-import com.skapps.YksStudyApp.Model.LogPomodoro
 import com.skapps.YksStudyApp.Model.Pomodoro
 import com.skapps.YksStudyApp.R
-import com.skapps.YksStudyApp.Service.PomodoroService
-import com.skapps.YksStudyApp.database.LocalDatabase
 import com.skapps.YksStudyApp.databinding.FragmentAddPomodoroBinding
 import com.skapps.YksStudyApp.view.Pomodoro.PomodoroActivity
 import com.warkiz.widget.IndicatorSeekBar
@@ -22,7 +19,7 @@ import com.warkiz.widget.OnSeekChangeListener
 import com.warkiz.widget.SeekParams
 
 
-class AddPomodoroFragment : BottomSheetDialogFragment(),HistoryClickListener{
+class AddPomodoroFragment : BottomSheetDialogFragment(), HistoryClickListener {
 
     private var _binding:FragmentAddPomodoroBinding?=null
     private val binding get() = _binding

@@ -4,10 +4,11 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.skapps.YksStudyApp.Listener.HistoryClickListener
 import com.skapps.YksStudyApp.Model.Pomodoro
 import com.skapps.YksStudyApp.databinding.AddpomodorocardBinding
 
-class HistoryPomodoroAdapter(var historyList:ArrayList<Pomodoro>,private val listener:HistoryClickListener) :RecyclerView.Adapter<HistoryPomodoroAdapter.HistoryViewHolder>() {
+class HistoryPomodoroAdapter(var historyList:ArrayList<Pomodoro>,private val listener: HistoryClickListener) :RecyclerView.Adapter<HistoryPomodoroAdapter.HistoryViewHolder>() {
     class HistoryViewHolder(val recyclerRowBinding:AddpomodorocardBinding):RecyclerView.ViewHolder(recyclerRowBinding.root){
 
             fun bind(pomodoro: Pomodoro,listener: HistoryClickListener){

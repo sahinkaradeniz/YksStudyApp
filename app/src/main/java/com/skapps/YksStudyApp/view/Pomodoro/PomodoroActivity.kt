@@ -9,11 +9,13 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.DialogFragment
 import com.skapps.YksStudyApp.Model.LogPomodoro
 import com.skapps.YksStudyApp.R
 import com.skapps.YksStudyApp.Service.PomodoroService
 import com.skapps.YksStudyApp.databinding.ActivityPomodoroBinding
 import com.skapps.YksStudyApp.view.AddPomodoroDialog.AddPomodoroFragment
+import com.skapps.YksStudyApp.view.Pomodoro.History.HistoryPomFragment
 import kotlin.math.log
 
 class PomodoroActivity : AppCompatActivity() {
@@ -45,6 +47,11 @@ class PomodoroActivity : AppCompatActivity() {
         }
         binding.backPomodoro.setOnClickListener {
             super.onBackPressed()
+        }
+        binding.historyPomodoro.setOnClickListener {
+            val dialog = HistoryPomFragment()
+            dialog.setStyle(DialogFragment.STYLE_NORMAL,R.style.custom_alert_dialog)
+            dialog.show(supportFragmentManager,"pomodoroFragment")
         }
     }
     override fun onStart() {

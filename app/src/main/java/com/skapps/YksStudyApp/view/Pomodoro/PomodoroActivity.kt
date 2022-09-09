@@ -4,12 +4,26 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.MutableLiveData
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.data.*
+import com.github.mikephil.charting.formatter.ColorFormatter
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import com.github.mikephil.charting.utils.ColorTemplate
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.shape.CornerFamily
+import com.google.android.material.shape.MaterialShapeDrawable
 import com.skapps.YksStudyApp.Model.LogPomodoro
 import com.skapps.YksStudyApp.R
 import com.skapps.YksStudyApp.Service.PomodoroService
@@ -31,13 +45,25 @@ class PomodoroActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState)
         binding = ActivityPomodoroBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val navHosFragment=supportFragmentManager.findFragmentById(R.id.navhostPomodoro) as NavHostFragment
+        NavigationUI.setupWithNavController(binding.bottomBar,navHosFragment.navController)
+        val bottomNavigationViewation : BottomNavigationView = findViewById(R.id.bottomBar)
+        val radius = resources.getDimension(R.dimen.my_value)
+
+        val shapeDrawable : MaterialShapeDrawable = bottomNavigationViewation.background as MaterialShapeDrawable
+        shapeDrawable.shapeAppearanceModel = shapeDrawable.shapeAppearanceModel
+            .toBuilder()
+            .setAllCorners(CornerFamily.ROUNDED, radius)
+            .build()
         binding.toggleButton.setOnClickListener {
             if (isStopwatchRunning) pauseStopwatch() else startStopwatch()
         }
+
         binding.addPomodoro.setOnClickListener {
             resetStopwatch()
             showDialogOne()
@@ -48,11 +74,8 @@ class PomodoroActivity : AppCompatActivity() {
         binding.backPomodoro.setOnClickListener {
             super.onBackPressed()
         }
-        binding.historyPomodoro.setOnClickListener {
-            val dialog = HistoryPomFragment()
-            dialog.setStyle(DialogFragment.STYLE_NORMAL,R.style.custom_alert_dialog)
-            dialog.show(supportFragmentManager,"pomodoroFragment")
-        }
+
+
     }
     override fun onStart() {
         super.onStart()
@@ -83,7 +106,6 @@ class PomodoroActivity : AppCompatActivity() {
                 updateStopwatchValue(timeElapsed)
             }
         }
-
         registerReceiver(statusReceiver, statusFilter)
 
         // Receiving time values from service

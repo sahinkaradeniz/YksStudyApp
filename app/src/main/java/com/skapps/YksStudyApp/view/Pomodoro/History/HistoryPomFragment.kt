@@ -1,19 +1,18 @@
 package com.skapps.YksStudyApp.view.Pomodoro.History
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
-import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.skapps.YksStudyApp.Adapter.LogPomodoroAdapter
-import com.skapps.YksStudyApp.R
 import com.skapps.YksStudyApp.databinding.FragmentHistoryPomBinding
+import com.stone.vega.library.VegaLayoutManager
 
-class HistoryPomFragment : DialogFragment() {
+
+class HistoryPomFragment : Fragment() {
     private var _binding:FragmentHistoryPomBinding?=null
     private val binding get() = _binding
     private lateinit var viewModel: HistoryPomViewModel
@@ -23,15 +22,12 @@ class HistoryPomFragment : DialogFragment() {
         _binding= FragmentHistoryPomBinding.inflate(inflater,container,false)
         viewModel = ViewModelProvider(this).get(HistoryPomViewModel::class.java)
         viewModel.getLogPomodoroRoom()
-        binding?.logpomodororec?.layoutManager=LinearLayoutManager(context)
+    //    binding?.logpomodororec?.layoutManager=LinearLayoutManager(context)
+        binding?.logpomodororec?.layoutManager = VegaLayoutManager()
         binding?.logpomodororec?.adapter=logPomodoroAdapter
         binding?.logpomodororec?.setHasFixedSize(true)
         observeLivedata()
-        binding!!.exitlogpomodoro.setOnClickListener {
-            dismiss()
-        }
         return binding?.root
-
     }
 
     override fun onResume() {

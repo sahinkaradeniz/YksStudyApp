@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:animateLayoutChanges="true"
-        android:backgroundTint="@android:color/transparent"
-        android:fillViewport="false"
-        tools:context=".view.Pomodoro.PomodoroFragment"
-        tools:ignore="SpeakableTextPresentCheck">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    android:backgroundTint="@android:color/transparent"
+    android:fillViewport="false"
+    tools:context=".view.Pomodoro.PomodoroFragment"
+    tools:ignore="SpeakableTextPresentCheck">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:backgroundTint="@color/white">
+        android:background="@color/black"
+        android:backgroundTint="@color/grey">
 
         <TextView
             android:id="@+id/textView10"
@@ -34,7 +34,7 @@
             android:id="@+id/toggle_button"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="32dp"
             android:background="@drawable/shadowbackground"
             android:contentDescription="@string/toggle_stopwatch"
             android:elevation="0dp"
@@ -74,15 +74,16 @@
 
         <com.github.guilhe.views.CircularProgressView
             android:id="@+id/circularProgressView"
-            android:layout_width="240dp"
-            android:layout_height="240dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="280dp"
+            android:layout_height="280dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/addPomodoro"
+            app:layout_constraintStart_toEndOf="@+id/backPomodoro"
             app:layout_constraintTop_toBottomOf="@+id/addPomodoro"
-            app:progressBarColor="@color/colorPrimary"
             app:progress="100"
+            app:progressBarColor="@color/colorPrimary"
             app:progressBarThickness="10dp" />
 
         <TextView
@@ -95,7 +96,7 @@
             android:layout_marginBottom="16dp"
             android:text="25 : 00"
             android:textColor="@color/colorPrimary"
-            android:textSize="40sp"
+            android:textSize="44sp"
             app:layout_constraintBottom_toBottomOf="@+id/circularProgressView"
             app:layout_constraintEnd_toEndOf="@+id/circularProgressView"
             app:layout_constraintHorizontal_bias="0.506"
@@ -114,67 +115,6 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="SpeakableTextPresentCheck" />
 
-        <TextView
-            android:id="@+id/overview_text_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Genel Bakış"
-            android:textAlignment="center"
-            android:textColor="@color/colorPrimary"
-            android:fontFamily="@font/raleway"
-            android:textSize="16sp"
-            app:layout_constraintTop_toBottomOf="@+id/toggle_button"
-            tools:layout_editor_absoluteX="20dp" />
-
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Geçmiş"
-            android:fontFamily="@font/raleway"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@+id/history_chart"
-            app:layout_constraintTop_toBottomOf="@+id/overview_text_view" />
-
-        <com.github.mikephil.charting.charts.LineChart
-            android:id="@+id/history_chart"
-            android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:layout_margin="8dp"
-
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView13" />
-
-        <TextView
-            android:id="@+id/textView333"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Aktiviteler"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            android:fontFamily="@font/raleway"
-            app:layout_constraintStart_toStartOf="@+id/history_chart"
-            app:layout_constraintTop_toBottomOf="@+id/history_chart" />
-
-        <com.github.mikephil.charting.charts.LineChart
-            android:id="@+id/history_chart2"
-            android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="32dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView333" />
 
         <ImageButton
             android:id="@+id/backPomodoro"
@@ -188,20 +128,31 @@
             app:layout_constraintTop_toTopOf="@+id/addPomodoro"
             tools:ignore="SpeakableTextPresentCheck" />
 
-        <ImageButton
-            android:id="@+id/historyPomodoro"
-            android:layout_width="52dp"
-            android:layout_height="52dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/shadowbackground"
-            android:src="@drawable/ic_baseline_history_24"
-            app:layout_constraintEnd_toEndOf="@+id/addPomodoro"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/addPomodoro"
-            app:layout_constraintTop_toBottomOf="@+id/addPomodoro"
-            tools:ignore="SpeakableTextPresentCheck" />
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomBar"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="40dp"
+            app:backgroundColor="@color/colorPrimary"
+            app:labelVisibilityMode="unlabeled"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toggle_button"
+            app:menu="@menu/pomodoro_menu" />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/navhostPomodoro"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:defaultNavHost="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bottomBar"
+            app:navGraph="@navigation/pomodoro_navigation" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+</ScrollView>

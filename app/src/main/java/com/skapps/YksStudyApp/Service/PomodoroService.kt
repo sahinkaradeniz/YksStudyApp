@@ -57,6 +57,7 @@ class PomodoroService : Service() {
     private var timePause:Long=timeElapsed.toLong()
     private var date:DateClass?=null
     val calender = Calendar.getInstance()
+
     private var logPomodoro= LogPomodoro(activity = "Diğer",time = 25,calender.get(Calendar.YEAR).toString(),
         SimpleDateFormat("MM",Locale.getDefault()).format(Date()).toString(),calender.get(Calendar.DAY_OF_MONTH).toString(),calender.get(Calendar.WEEK_OF_YEAR).toString(),SimpleDateFormat("HH",Locale.getDefault()).format(Date()).toString(),SimpleDateFormat("mm",Locale.getDefault()).format(Date()).toString())
 
@@ -69,6 +70,7 @@ class PomodoroService : Service() {
      * onBind()'i tekrar çağırmadan.
      * */
     override fun onBind(p0: Intent?): IBinder? {
+
         Log.d("Stopwatch", "Stopwatch onBind")
         return null
     }
@@ -169,7 +171,7 @@ class PomodoroService : Service() {
         }, 0, 1000)
         */
         //timePause
-         cTimer = object : CountDownTimer(5*1000, 1000) {
+         cTimer = object : CountDownTimer(3*1000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val stopwatchIntent = Intent()
                 stopwatchIntent.action = STOPWATCH_TICK

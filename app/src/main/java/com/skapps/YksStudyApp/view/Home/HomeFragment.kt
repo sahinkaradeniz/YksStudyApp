@@ -10,6 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.skapps.YksStudyApp.R
 import com.skapps.YksStudyApp.databinding.FragmentHomeBinding
 import com.skapps.YksStudyApp.util.getTime
 import com.skapps.YksStudyApp.view.Pomodoro.PomodoroActivity
@@ -27,6 +29,9 @@ class HomeFragment : Fragment() {
         binding!!.pomodoro.setOnClickListener {
             val intent = Intent(requireContext(), PomodoroActivity::class.java)
             startActivity(intent)
+        }
+        binding!!.analiz.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_pomodoroFragment)
         }
 
         return binding?.root

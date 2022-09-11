@@ -116,7 +116,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/appCompatButton"
+        android:id="@+id/sinupButton"
         android:layout_width="0dp"
         android:layout_height="58dp"
         android:layout_marginStart="16dp"
@@ -158,8 +158,8 @@
         android:text="Veya"
         android:textColor="@color/black"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/appCompatButton"
-        app:layout_constraintStart_toStartOf="@+id/appCompatButton"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatButton" />
+        app:layout_constraintEnd_toEndOf="@+id/sinupButton"
+        app:layout_constraintStart_toStartOf="@+id/sinupButton"
+        app:layout_constraintTop_toBottomOf="@+id/sinupButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

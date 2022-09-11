@@ -44,7 +44,7 @@
     </fragment>
     <dialog
         android:id="@+id/addPomodoroFragment"
-        android:name="com.skapps.YksStudyApp.view.AddPomodoroDialog.AddPomodoroFragment"
+        android:name="com.skapps.YksStudyApp.view.Pomodoro.AddPomodoroDialog.AddPomodoroFragment"
         android:label="fragment_add_pomodoro"
         tools:layout="@layout/fragment_add_pomodoro" >
         <action

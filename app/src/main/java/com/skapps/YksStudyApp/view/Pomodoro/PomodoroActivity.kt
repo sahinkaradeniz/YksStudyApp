@@ -4,34 +4,22 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.DialogFragment
-import androidx.lifecycle.MutableLiveData
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
-import com.github.mikephil.charting.components.XAxis
-import com.github.mikephil.charting.data.*
-import com.github.mikephil.charting.formatter.ColorFormatter
-import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
-import com.github.mikephil.charting.utils.ColorTemplate
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.shape.MaterialShapeDrawable
-import com.skapps.YksStudyApp.Model.LogPomodoro
 import com.skapps.YksStudyApp.R
 import com.skapps.YksStudyApp.Service.PomodoroService
 import com.skapps.YksStudyApp.databinding.ActivityPomodoroBinding
-import com.skapps.YksStudyApp.view.AddPomodoroDialog.AddPomodoroFragment
+import com.skapps.YksStudyApp.view.Pomodoro.AddPomodoroDialog.AddPomodoroFragment
 import com.skapps.YksStudyApp.view.MainActivity
-import com.skapps.YksStudyApp.view.Pomodoro.History.HistoryPomFragment
-import kotlin.math.log
 
 class PomodoroActivity : AppCompatActivity() {
 

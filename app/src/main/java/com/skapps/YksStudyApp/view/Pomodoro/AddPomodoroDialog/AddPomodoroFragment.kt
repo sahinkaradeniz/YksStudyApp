@@ -1,4 +1,4 @@
-package com.skapps.YksStudyApp.view.AddPomodoroDialog
+package com.skapps.YksStudyApp.view.Pomodoro.AddPomodoroDialog
 
 import android.content.Intent
 import android.os.Bundle

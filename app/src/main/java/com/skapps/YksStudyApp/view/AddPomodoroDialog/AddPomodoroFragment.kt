@@ -52,6 +52,7 @@ class AddPomodoroFragment : BottomSheetDialogFragment(), HistoryClickListener {
         binding!!.seekBar.setOnSeekChangeListener(object : OnSeekChangeListener {
             override fun onSeeking(seekParams: SeekParams) {
                 time=seekParams.progress
+                addhistory.time=seekParams.progress
             }
             override fun onStartTrackingTouch(seekBar: IndicatorSeekBar) {}
             override fun onStopTrackingTouch(seekBar: IndicatorSeekBar) {
@@ -77,8 +78,6 @@ class AddPomodoroFragment : BottomSheetDialogFragment(), HistoryClickListener {
             pomodoroAdapter.updatePomodoro(it)
         }
     }
-
-
 
     private fun startPomodoro(time:Int){
         val intent = Intent(requireContext(), PomodoroActivity::class.java)

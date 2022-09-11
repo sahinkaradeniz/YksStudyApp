@@ -29,6 +29,7 @@ import com.skapps.YksStudyApp.R
 import com.skapps.YksStudyApp.Service.PomodoroService
 import com.skapps.YksStudyApp.databinding.ActivityPomodoroBinding
 import com.skapps.YksStudyApp.view.AddPomodoroDialog.AddPomodoroFragment
+import com.skapps.YksStudyApp.view.MainActivity
 import com.skapps.YksStudyApp.view.Pomodoro.History.HistoryPomFragment
 import kotlin.math.log
 
@@ -72,7 +73,8 @@ class PomodoroActivity : AppCompatActivity() {
             resetStopwatch()
         }
         binding.backPomodoro.setOnClickListener {
-            super.onBackPressed()
+            val intent=Intent(this,MainActivity::class.java)
+            startActivity(intent)
         }
 
 

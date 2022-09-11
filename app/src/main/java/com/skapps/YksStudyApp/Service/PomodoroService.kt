@@ -171,7 +171,7 @@ class PomodoroService : Service() {
         }, 0, 1000)
         */
         //timePause
-         cTimer = object : CountDownTimer(3*1000, 1000) {
+         cTimer = object : CountDownTimer(timePause, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val stopwatchIntent = Intent()
                 stopwatchIntent.action = STOPWATCH_TICK

@@ -12,14 +12,12 @@ import androidx.core.content.ContextCompat
 import com.skapps.YksStudyApp.Model.DateClass
 import com.skapps.YksStudyApp.Model.LogPomodoro
 import com.skapps.YksStudyApp.R
+import com.skapps.YksStudyApp.Statistics.Pomodoro.RatingPomodoro
 import com.skapps.YksStudyApp.database.LocalDatabase
 import com.skapps.YksStudyApp.database.LogPomDatabase
 import com.skapps.YksStudyApp.database.PomodoroDatabase
 import com.skapps.YksStudyApp.view.Pomodoro.PomodoroActivity
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.util.*
@@ -57,7 +55,8 @@ class PomodoroService : Service() {
     private var timePause:Long=timeElapsed.toLong()
     private var date:DateClass?=null
     val calender = Calendar.getInstance()
-
+    @OptIn(DelicateCoroutinesApi::class)
+    private val rating= RatingPomodoro()
     private var logPomodoro= LogPomodoro(activity = "Diğer",time = 25,calender.get(Calendar.YEAR).toString(),
         SimpleDateFormat("MM",Locale.getDefault()).format(Date()).toString(),calender.get(Calendar.DAY_OF_MONTH).toString(),calender.get(Calendar.WEEK_OF_YEAR).toString(),SimpleDateFormat("HH",Locale.getDefault()).format(Date()).toString(),SimpleDateFormat("mm",Locale.getDefault()).format(Date()).toString())
 
@@ -86,7 +85,6 @@ class PomodoroService : Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         createChannel()
         getNotificationManager()
-
         val action = intent?.getStringExtra(IZLEME_DURDUR)!!
         Log.d("Stopwatch", "onStartCommand Action: $action")
         when (action) {
@@ -154,6 +152,7 @@ class PomodoroService : Service() {
      * STOPWATCH_TICK eylemiyle.
      * Geçen süreye erişmek için bu yayını MainActivity'de alacağız.
      * */
+    @OptIn(DelicateCoroutinesApi::class)
     private fun startStopwatch() {
         isStopWatchRunning = true
         sendStatus()
@@ -171,7 +170,7 @@ class PomodoroService : Service() {
         }, 0, 1000)
         */
         //timePause
-         cTimer = object : CountDownTimer(timePause, 1000) {
+         cTimer = object : CountDownTimer(5*1000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val stopwatchIntent = Intent()
                 stopwatchIntent.action = STOPWATCH_TICK
@@ -180,13 +179,13 @@ class PomodoroService : Service() {
                 stopwatchIntent.putExtra(GECEN_SURE, timeElapsed)
                 sendBroadcast(stopwatchIntent)
             }
-
              override fun onFinish() {
                  pauseStopwatch()
                  GlobalScope.launch{
-                   //  logPomodoro.date= DateClass(calender.get(Calendar.YEAR),calender.get(Calendar.MONTH),calender.get(Calendar.DAY_OF_MONTH),calender.get(Calendar.WEEK_OF_YEAR),calender.get(Calendar.HOUR_OF_DAY),calender.get(Calendar.MINUTE))
+               //      logPomodoro.date= DateClass(calender.get(Calendar.YEAR),calender.get(Calendar.MONTH),calender.get(Calendar.DAY_OF_MONTH),calender.get(Calendar.WEEK_OF_YEAR),calender.get(Calendar.HOUR_OF_DAY),calender.get(Calendar.MINUTE))
                      saveRoom(logPomodoro)
                      Log.e("PomodoroService", "Savetest succes: ${logPomodoro.activity}")
+                     rating.updateTimes(logPomodoro.time!!)
                  }
              }
          }
@@ -198,6 +197,7 @@ class PomodoroService : Service() {
      * Kronometrenin mevcut durumunun bir güncellemesini gönderir
      * */
     private suspend fun saveRoom(logPomodoro: LogPomodoro){
+        Log.e("save Room",logPomodoro.activity.toString())
         val dao =LogPomDatabase(getApplication()).logPomDao()
         dao.insert(logPomodoro)
     }

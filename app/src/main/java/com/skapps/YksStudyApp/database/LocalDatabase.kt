@@ -5,16 +5,16 @@ import android.content.SharedPreferences
 
 class LocalDatabase(){
 
-    fun setSharedPreference(context: Context, key: String?, time: Int) {
+    fun setSharedPreference(context: Context, key: String?, time: String) {
         val sharedPref: SharedPreferences = context.getSharedPreferences("com.skapps.YksStudyApp.database", Context.MODE_PRIVATE)
         val edit = sharedPref.edit()
-        edit.putInt(key,time)
+        edit.putString(key,time)
         edit.commit()
     }
 
-    fun getSharedPreference(context: Context, key: String?, defaultValue: Int?):Int{
+    fun getSharedPreference(context: Context, key: String?, defaultValue: String?): String? {
         return context.getSharedPreferences("com.skapps.YksStudyApp.database", Context.MODE_PRIVATE)
-            .getInt(key, defaultValue!!)
+            .getString(key, defaultValue!!)
     }
 
     fun clearSharedPreference(context: Context) {

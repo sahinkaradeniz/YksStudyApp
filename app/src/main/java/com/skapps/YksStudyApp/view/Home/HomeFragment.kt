@@ -12,6 +12,7 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.skapps.YksStudyApp.R
+import com.skapps.YksStudyApp.database.LocalDatabase
 import com.skapps.YksStudyApp.databinding.FragmentHomeBinding
 import com.skapps.YksStudyApp.util.getTime
 import com.skapps.YksStudyApp.view.Pomodoro.PomodoroActivity
@@ -22,6 +23,7 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding?=null
     private val binding get() = _binding
     private lateinit var countDownTimer:CountDownTimer
+    private val localDatabase=LocalDatabase()
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding=FragmentHomeBinding.inflate(inflater,container,false)
@@ -31,8 +33,10 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
         binding!!.analiz.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_pomodoroFragment)
+
         }
+       binding!!.homenameText.text= localDatabase.getSharedPreference(requireContext(),"username","null")
+
 
         return binding?.root
     }

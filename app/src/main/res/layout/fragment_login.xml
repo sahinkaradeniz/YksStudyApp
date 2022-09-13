@@ -40,7 +40,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:text="sahink@gmail.com" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -55,12 +56,13 @@
         app:layout_constraintTop_toBottomOf="@+id/emailtext"
         app:startIconDrawable="@drawable/ic_baseline_lock_24"
         app:endIconMode="password_toggle">
+
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Şifre"
             android:inputType="textPassword"
-            />
+            android:text="123456" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -96,37 +98,13 @@
 
     <ImageButton
         android:id="@+id/facebookLogin"
-        android:layout_width="100dp"
+        android:layout_width="0dp"
         android:layout_height="70dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/shadowbackground"
         android:src="@drawable/ic_baseline_perm_phone_msg_24"
-        app:layout_constraintBottom_toBottomOf="@+id/googleLogin"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/googleLogin"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/googleLogin"
-        android:layout_width="100dp"
-        android:layout_height="70dp"
-        android:background="@drawable/shadowbackground"
-        android:src="@drawable/ic_restart"
-        app:layout_constraintBottom_toBottomOf="@+id/phonelogin"
-        app:layout_constraintEnd_toStartOf="@+id/phonelogin"
-        app:layout_constraintStart_toEndOf="@+id/facebookLogin"
-        app:layout_constraintTop_toTopOf="@+id/phonelogin"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/phonelogin"
-        android:layout_width="100dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/shadowbackground"
-        android:src="@drawable/ic_baseline_calendar_today_24"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/loginButton"
+        app:layout_constraintStart_toStartOf="@+id/loginButton"
         app:layout_constraintTop_toBottomOf="@+id/textView27"
         tools:ignore="SpeakableTextPresentCheck" />
 

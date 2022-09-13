@@ -22,6 +22,10 @@ infix fun Context.toast(message:String){
 infix fun Context.warningToast(message:String){
     Toasty.warning(this,message, Toasty.LENGTH_SHORT).show()
 }
+@SuppressLint("CheckResult")
+infix fun Context.succesToast(message:String){
+    Toasty.success(this,message, Toasty.LENGTH_SHORT).show()
+}
 
 fun NavController.safeNavigate(direction: NavDirections) {
     Log.d("safe", "Click happened")

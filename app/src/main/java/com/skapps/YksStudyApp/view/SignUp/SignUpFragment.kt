@@ -10,7 +10,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import com.skapps.YksStudyApp.R
+import com.skapps.YksStudyApp.database.LocalDatabase
 import com.skapps.YksStudyApp.databinding.FragmentSignUpBinding
 import com.skapps.YksStudyApp.util.infoToast
 import com.skapps.YksStudyApp.util.toast
@@ -20,16 +23,17 @@ import es.dmoral.toasty.Toasty
 import es.dmoral.toasty.Toasty.info
 
 class SignUpFragment : Fragment() {
-    companion object {
-        fun newInstance() = SignUpFragment()
-    }
+
     private lateinit var viewModel: SignUpViewModel
     private lateinit var _binding:FragmentSignUpBinding
     private val binding get() = _binding
-    private var emailList=ArrayList<String>()
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentSignUpBinding.inflate(inflater, container, false)
+        binding.facebookLogin2.setOnClickListener {
+            findNavController().navigate(R.id.action_signUpFragment_to_addNickNameFragment)
+        }
         return binding.root
     }
 
@@ -51,15 +55,16 @@ class SignUpFragment : Fragment() {
             }else{
               //  viewModel.emailControl(emailList,email,requireContext())
               //  requireContext().warningToast("Bu email başka bir hesap tarafından kullanılmakta")
-              viewModel.userRegister(email,password,requireContext())
-                val dialog =AddNickNameFragment()
-                dialog.setStyle(DialogFragment.STYLE_NORMAL,R.style.custom_alert_dialog)
-                dialog.show(requireActivity().supportFragmentManager,"addNickNameFragment")
+              viewModel.userRegister(email,password,name,requireContext())
             }
         }
     }
 
-   private fun observeLiveData(){
-
+    private fun observeLiveData(){
+        viewModel.isSuccesful.observe(viewLifecycleOwner){
+            if (it){
+                findNavController().navigate(R.id.action_signUpFragment_to_addNickNameFragment)
+            }
+        }
    }
 }

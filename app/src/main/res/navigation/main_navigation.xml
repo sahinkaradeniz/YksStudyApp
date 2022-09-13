@@ -9,11 +9,7 @@
         android:id="@+id/homeFragment"
         android:name="com.skapps.YksStudyApp.view.Home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_homeFragment_to_pomodoroFragment"
-            app:destination="@id/pomodoroFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.skapps.YksStudyApp.view.Login.LoginFragment"
@@ -25,31 +21,15 @@
         <action
             android:id="@+id/action_loginFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/pomodoroFragment"
-        android:name="com.skapps.YksStudyApp.view.Pomodoro.PomodoroFragment"
-        android:label="fragment_pomodoro"
-        tools:layout="@layout/fragment_pomodoro" >
-
         <action
-            android:id="@+id/action_pomodoroFragment_to_addPomodoroFragment"
-            app:destination="@id/addPomodoroFragment"
-            app:launchSingleTop="true"
-            app:popUpTo="@+id/main_nav_graph"
-            app:popUpToInclusive="true"/>
-        <action
-            android:id="@+id/action_pomodoroFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            android:id="@+id/action_loginFragment_to_addNickNameFragment"
+            app:destination="@id/addNickNameFragment" />
     </fragment>
     <dialog
         android:id="@+id/addPomodoroFragment"
         android:name="com.skapps.YksStudyApp.view.Pomodoro.AddPomodoroDialog.AddPomodoroFragment"
         android:label="fragment_add_pomodoro"
         tools:layout="@layout/fragment_add_pomodoro" >
-        <action
-            android:id="@+id/action_addPomodoroFragment_to_pomodoroFragment"
-            app:destination="@id/pomodoroFragment" />
         <argument
             android:name="time"
             app:argType="long"
@@ -64,7 +44,16 @@
             android:id="@+id/action_signUpFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
         <action
-            android:id="@+id/action_signUpFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            android:id="@+id/action_signUpFragment_to_addNickNameFragment"
+            app:destination="@id/addNickNameFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/addNickNameFragment"
+        android:name="com.skapps.YksStudyApp.view.NicknameAdd.AddNickNameFragment"
+        android:label="fragment_add_nick_name"
+        tools:layout="@layout/fragment_add_nick_name" >
+        <action
+            android:id="@+id/action_addNickNameFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </dialog>
 </navigation>

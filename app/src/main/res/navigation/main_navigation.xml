@@ -3,13 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.skapps.YksStudyApp.view.Home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.skapps.YksStudyApp.view.Login.LoginFragment"
@@ -25,16 +29,6 @@
             android:id="@+id/action_loginFragment_to_addNickNameFragment"
             app:destination="@id/addNickNameFragment" />
     </fragment>
-    <dialog
-        android:id="@+id/addPomodoroFragment"
-        android:name="com.skapps.YksStudyApp.view.Pomodoro.AddPomodoroDialog.AddPomodoroFragment"
-        android:label="fragment_add_pomodoro"
-        tools:layout="@layout/fragment_add_pomodoro" >
-        <argument
-            android:name="time"
-            app:argType="long"
-            android:defaultValue="1000L" />
-    </dialog>
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.skapps.YksStudyApp.view.SignUp.SignUpFragment"
@@ -56,4 +50,18 @@
             android:id="@+id/action_addNickNameFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </dialog>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.skapps.YksStudyApp.view.Settings.SettingsFragment"
+        android:label="fragment_settings_profile"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_settingsProfileFragment2"
+            app:destination="@id/settingsProfileFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsProfileFragment2"
+        android:name="com.skapps.YksStudyApp.view.SettingsProfile.SettingsProfileFragment"
+        android:label="fragment_settings_profile"
+        tools:layout="@layout/fragment_settings_profile" />
 </navigation>

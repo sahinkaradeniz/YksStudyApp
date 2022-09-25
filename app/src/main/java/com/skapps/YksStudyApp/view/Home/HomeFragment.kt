@@ -14,11 +14,9 @@ import androidx.navigation.fragment.findNavController
 import com.skapps.YksStudyApp.R
 import com.skapps.YksStudyApp.database.LocalDatabase
 import com.skapps.YksStudyApp.databinding.FragmentHomeBinding
-import com.skapps.YksStudyApp.util.getTime
 import com.skapps.YksStudyApp.view.Pomodoro.PomodoroActivity
 import java.text.SimpleDateFormat
 import java.util.*
-
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding?=null
     private val binding get() = _binding
@@ -35,9 +33,13 @@ class HomeFragment : Fragment() {
         binding!!.analiz.setOnClickListener {
 
         }
+        binding.let {
+            it?.settingsButton?.setOnClickListener {
+                findNavController().navigate(R.id.action_homeFragment_to_settingsFragment)
+            }
+        }
+
        binding!!.homenameText.text= localDatabase.getSharedPreference(requireContext(),"username","null")
-
-
         return binding?.root
     }
 
@@ -56,16 +58,12 @@ class HomeFragment : Fragment() {
                 val minutesInMilli = secondsInMilli * 60
                 val hoursInMilli = minutesInMilli * 60
                 val daysInMilli = hoursInMilli * 24
-
                 val elapsedDays = diff / daysInMilli
                 diff %= daysInMilli
-
                 val elapsedHours = diff / hoursInMilli
                 diff %= hoursInMilli
-
                 val elapsedMinutes = diff / minutesInMilli
                 diff %= minutesInMilli
-
                 val elapsedSeconds = diff / secondsInMilli
 
                 binding?.dateYks?.text = "$elapsedDays Gün $elapsedHours Saat $elapsedMinutes Dakika $elapsedSeconds sn. kaldı."

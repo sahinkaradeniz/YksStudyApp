@@ -97,7 +97,6 @@ class PomodoroActivity : AppCompatActivity() {
             }
         }
         registerReceiver(statusReceiver, statusFilter)
-
         // Receiving time values from service
         val timeFilter = IntentFilter()
         timeFilter.addAction(PomodoroService.STOPWATCH_TICK)
@@ -112,10 +111,8 @@ class PomodoroActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-
         unregisterReceiver(statusReceiver)
         unregisterReceiver(timeReceiver)
-
         // Moving the service to foreground when the app is in background / not visible
         moveToForeground()
     }

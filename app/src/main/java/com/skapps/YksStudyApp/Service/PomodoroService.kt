@@ -23,7 +23,6 @@ import java.time.LocalDateTime
 import java.util.*
 import kotlin.math.log
 
-
 class PomodoroService : Service() {
     companion object {
         // Channel ID for notifications
@@ -170,7 +169,7 @@ class PomodoroService : Service() {
         }, 0, 1000)
         */
         //timePause
-         cTimer = object : CountDownTimer(5*1000, 1000) {
+         cTimer = object : CountDownTimer(timePause, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val stopwatchIntent = Intent()
                 stopwatchIntent.action = STOPWATCH_TICK

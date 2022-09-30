@@ -7,7 +7,7 @@
     android:animateLayoutChanges="true"
     android:backgroundTint="@android:color/transparent"
     android:fillViewport="false"
-    tools:context=".view.Pomodoro.PomodoroFragment"
+    tools:context=".view.Pomodoro.PomodoroActivity"
     tools:ignore="SpeakableTextPresentCheck">
 
     <androidx.constraintlayout.widget.ConstraintLayout

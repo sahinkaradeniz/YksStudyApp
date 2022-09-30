@@ -31,7 +31,6 @@ class RatingPomodoroFragment : Fragment() {
 
         return binding?.root
     }
-
       private fun observeLiveData(){
           viewModel.ratingList.observe(viewLifecycleOwner){
               ratingPomodoroAdapter.updatePomodoroRating(it)

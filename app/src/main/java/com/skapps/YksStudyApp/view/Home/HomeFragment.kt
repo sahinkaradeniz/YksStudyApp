@@ -30,9 +30,7 @@ class HomeFragment : Fragment() {
             val intent = Intent(requireContext(), PomodoroActivity::class.java)
             startActivity(intent)
         }
-        binding!!.analiz.setOnClickListener {
 
-        }
         binding.let {
             it?.settingsButton?.setOnClickListener {
                 findNavController().navigate(R.id.action_homeFragment_to_settingsFragment)
@@ -45,7 +43,7 @@ class HomeFragment : Fragment() {
 
     fun printDifferenceDateForHours() {
         val currentTime = Calendar.getInstance().time
-        val endDateDay = "29/09/2022 00:00:00"
+        val endDateDay = "18/06/2023 00:00:00"
         val format1 = SimpleDateFormat("dd/MM/yyyy hh:mm:ss",Locale.getDefault())
         val endDate = format1.parse(endDateDay)
         //milliseconds

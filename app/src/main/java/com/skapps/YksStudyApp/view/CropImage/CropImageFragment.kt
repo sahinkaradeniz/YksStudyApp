@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import com.skapps.YksStudyApp.R
 
 class CropImageFragment : Fragment() {
-    
+
     private lateinit var viewModel: CropImageViewModel
 
     override fun onCreateView(
@@ -22,7 +22,7 @@ class CropImageFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(CropImageViewModel::class.java)
-        // TODO: Use the ViewModel
+
     }
 
 }

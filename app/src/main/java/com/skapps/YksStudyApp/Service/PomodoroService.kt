@@ -84,6 +84,7 @@ class PomodoroService : Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         createChannel()
         getNotificationManager()
+
         val action = intent?.getStringExtra(IZLEME_DURDUR)!!
         Log.d("Stopwatch", "onStartCommand Action: $action")
         when (action) {

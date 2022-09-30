@@ -26,8 +26,6 @@ class LoginFragment : Fragment() {
     private lateinit var viewModel: LoginViewModel
     private var _binding: FragmentLoginBinding?=null
     private val binding get()=_binding
-    @OptIn(DelicateCoroutinesApi::class)
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         auth = Firebase.auth

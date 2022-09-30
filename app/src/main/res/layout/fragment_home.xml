@@ -13,7 +13,7 @@ tools:context=".view.Home.HomeFragment">
     android:layout_width="match_parent"
     android:layout_height="0dp"
     android:orientation="vertical"
-    app:layout_constraintBottom_toTopOf="@+id/analiz"
+    app:layout_constraintBottom_toTopOf="@+id/pomodoro"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
@@ -135,10 +135,10 @@ tools:context=".view.Home.HomeFragment">
     android:layout_height="wrap_content"
     android:background="@drawable/shadowbackground"
     app:layout_constraintBottom_toTopOf="@+id/constraintLayout5"
-    app:layout_constraintEnd_toEndOf="@+id/pomodoro"
+    app:layout_constraintEnd_toEndOf="@+id/denem"
     app:layout_constraintHorizontal_bias="0.0"
-    app:layout_constraintStart_toStartOf="@+id/pomodoro"
-    app:layout_constraintTop_toBottomOf="@+id/pomodoro">
+    app:layout_constraintStart_toStartOf="@+id/denem"
+    app:layout_constraintTop_toBottomOf="@+id/denem">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -166,15 +166,15 @@ tools:context=".view.Home.HomeFragment">
 </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/pomodoro"
+        android:id="@+id/denem"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/shadowbackground"
-        app:layout_constraintEnd_toStartOf="@+id/analiz"
+        app:layout_constraintEnd_toStartOf="@+id/pomodoro"
         app:layout_constraintStart_toStartOf="@+id/linearLayout"
-        app:layout_constraintTop_toTopOf="@+id/analiz">
+        app:layout_constraintTop_toTopOf="@+id/pomodoro">
 
         <ImageView
             android:id="@+id/imageView3"
@@ -207,7 +207,7 @@ tools:context=".view.Home.HomeFragment">
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 <androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/analiz"
+    android:id="@+id/pomodoro"
     android:layout_width="144dp"
     android:layout_height="0dp"
     android:layout_marginEnd="16dp"
@@ -250,8 +250,8 @@ tools:context=".view.Home.HomeFragment">
     android:layout_marginBottom="16dp"
     android:background="@drawable/shadowbackground"
     app:layout_constraintBottom_toTopOf="@+id/constraintLayout6"
-    app:layout_constraintEnd_toEndOf="@+id/analiz"
-    app:layout_constraintStart_toStartOf="@+id/analiz">
+    app:layout_constraintEnd_toEndOf="@+id/pomodoro"
+    app:layout_constraintStart_toStartOf="@+id/pomodoro">
 
     <TextView
         android:id="@+id/textView2"
@@ -290,7 +290,7 @@ tools:context=".view.Home.HomeFragment">
     android:layout_marginBottom="16dp"
     android:background="@drawable/shadowbackground"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="@+id/pomodoro"
+    app:layout_constraintEnd_toEndOf="@+id/denem"
     app:layout_constraintStart_toStartOf="@+id/constraintLayout3">
 
     <ImageView

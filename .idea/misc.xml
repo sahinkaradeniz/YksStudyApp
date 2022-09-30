@@ -35,21 +35,22 @@
         <entry key="app/src/main/res/drawable/pomodororoundend.xml" value="0.2225" />
         <entry key="app/src/main/res/drawable/rating_background.xml" value="0.197" />
         <entry key="app/src/main/res/drawable/round_shape.xml" value="0.352" />
+        <entry key="app/src/main/res/drawable/secondaryshadowbg.xml" value="0.293" />
         <entry key="app/src/main/res/drawable/shadowbackground.xml" value="0.2185" />
         <entry key="app/src/main/res/layout-land/fragment_add_pomodoro.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_pomodoro.xml" value="0.580852775543041" />
+        <entry key="app/src/main/res/layout/activity_pomodoro.xml" value="0.34772462077012833" />
         <entry key="app/src/main/res/layout/addpomodorocard.xml" value="1.3262997722258778" />
         <entry key="app/src/main/res/layout/card_pomodoro_rating.xml" value="0.6873350923482849" />
         <entry key="app/src/main/res/layout/cardhistorypomodoro.xml" value="0.7775061124694377" />
         <entry key="app/src/main/res/layout/fragment_add_nick_name.xml" value="0.9910817916834381" />
         <entry key="app/src/main/res/layout/fragment_add_pomodoro.xml" value="0.6771594054184491" />
         <entry key="app/src/main/res/layout/fragment_history_pom.xml" value="0.8454332552693209" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.8199672667757774" />
-        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.9964019775390623" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.7763157894736842" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.7108433734939759" />
         <entry key="app/src/main/res/layout/fragment_pomodoro.xml" value="0.596931659693166" />
         <entry key="app/src/main/res/layout/fragment_rating_pomodoro.xml" value="0.31418914794921876" />
-        <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.2644444444444444" />
+        <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.764124009874132" />
         <entry key="app/src/main/res/layout/fragment_settings_profile.xml" value="0.1937164306640624" />
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.7646941173830414" />
         <entry key="app/src/main/res/layout/fragment_statistic.xml" value="0.7203994293865906" />

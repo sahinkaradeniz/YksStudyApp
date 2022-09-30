@@ -32,7 +32,6 @@ class RatingPomodoroViewModel(application: Application): BaseViewModel(applicati
                         val totaltime=value.get("totaltime") as Long
                         val user=UserProfile(id,nickname,email,password,name,totaltime)
                         userList.add(user)
-                        Log.e("getRating", "Current cites in CA: ${value.get("totaltime")}")
                     }
                     ratingList.value=userList
                 }
